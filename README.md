@@ -79,3 +79,9 @@ console.log(`Transaction sent with hash: \${txHash}`);
 
 ## TODO
 - [ ] interactive tutorial experiences
+
+## Reference
+- [Lumos Examples](https://github.com/ckb-js/lumos/blob/develop/examples)
+  - Preview and interact with `simple transfer` code online through [codesandbox](https://codesandbox.io).
+    https://codesandbox.io/s/github/ckb-js/lumos/tree/develop/examples/secp256k1-transfer?file=/lib.ts
+  - etc.  
