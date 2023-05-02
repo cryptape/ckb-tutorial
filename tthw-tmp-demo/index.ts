@@ -1,24 +1,3 @@
-# Tutorial Target
-The target of this tutorial is very simple: use [Lumos](https://github.com/ckb-js/lumos) to write "Common Knowledge: Hello world!" into a cell on CKB testnet and check it on CKB explorer.
-
-TODO: In this tutorial, a browser-based runtime called [WebContainers](https://webcontainers.io/) is leveraged to create a minimal development environment only in the browser to acheive interactive tutorial experiences. Let's use the latest web capabilities to deliver a nice browser-based development experience for a new generation of interactive courses.
-
-## Prerequisites
-1. Node.js
-
-2. Lumos
-Lumos provides a high-level API for interacting with CKB, which makes it easier to develop dApps.
-You can install Lumos by running the following command:
-
-```bash
-npm install @ckb-lumos/base @ckb-lumos/indexer @ckb-lumos/common @ckb-lumos/hd-indexer @ckb-lumos/transaction @ckb-lumos/wallet
-```
-
-## Pseudo Code
-After installing Lumos, you can use it to send a transaction to CKB testnet, write a simple `Common Knowledge`: "Hello World" into a [cell](https://docs.nervos.org/docs/reference/cell/) on CKB.
-Here's an example of how you can do that:
-
-```js
 import { generateAccountFromPrivateKey, ckbIndexer } from "./helper";
 import { CHARLIE } from "./test-keys";
 import { Hash, Cell, RPC, commons, helpers as lumosHelpers, HexString, hd, config } from "@ckb-lumos/lumos";
@@ -34,9 +13,7 @@ console.log(`Charlie's account: ${JSON.stringify(account, undefined, 2)}`);
 const CKB_TESTNET_EXPLORER = "https://pudge.explorer.nervos.org";
 console.log(`Explorer: ${CKB_TESTNET_EXPLORER}/address/${account.address}`);
 
-
 // TODO: one line code to get faucet from https://faucet.nervos.org or https://github.com/Flouse/nervos-functions#faucet
-
 
 // create a new transaction that adds a cell with the message "Common Knowledge: Hello world!"
 const constructHelloWorldTx = async (): Promise<lumosHelpers.TransactionSkeletonType> => {
@@ -108,13 +85,3 @@ const signAndSendTx = async (
   const txHash = await signAndSendTx(txSkeleton, testPrivKey);
   console.log(`Transaction sent: ${txHash}`);
 })();
-```
-
-## TODO
-- [ ] implement interactive tutorial experiences
-
-## Reference
-- [Lumos Examples](https://github.com/ckb-js/lumos/blob/develop/examples)
-  - Preview and interact with `simple transfer` code online through [codesandbox](https://codesandbox.io).
-    https://codesandbox.io/s/github/ckb-js/lumos/tree/develop/examples/secp256k1-transfer?file=/lib.ts
-  - etc.  
