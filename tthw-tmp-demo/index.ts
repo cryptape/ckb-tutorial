@@ -72,7 +72,7 @@ const signAndSendTx = async (
   const rpc = new RPC("https://testnet.ckb.dev/rpc");
 
   // send the transaction to CKB node, null and passthrough mean skipping outputs validation
-  const txHash = await rpc.sendTransaction(signedTx, 'passthrough')
+  const txHash = await rpc.sendTransaction(signedTx)
   return txHash;
 }
 
@@ -92,6 +92,6 @@ const signAndSendTx = async (
   const txHash = await signAndSendTx(txSkeleton, testPrivKey);
   console.log(`Transaction ${txHash} sent.\n`);
 
-  // Done, let's see the transaction in the CKB Testnet explorer
+  // Done, let's see the transaction in CKB Testnet Explorer
   console.log(`See ${CKB_TESTNET_EXPLORER}/transaction/${txHash}`);
 })();
