@@ -2,8 +2,6 @@
 
 The target of this tutorial is very simple: use [Lumos](https://github.com/ckb-js/lumos) to write "Common Knowledge: Hello world!" into a cell on CKB testnet and check it on CKB explorer.
 
-TODO: In this tutorial, a browser-based runtime called [WebContainers](https://webcontainers.io/) is leveraged to create a minimal development environment only in the browser to acheive interactive tutorial experiences. Let's use the latest web capabilities to deliver a nice browser-based development experience for a new generation of interactive courses.
-
 ## Sample Code
 After installing Lumos, you can use it to send a transaction to CKB testnet, write a simple `Common Knowledge`: "Hello World" into a [cell](https://docs.nervos.org/docs/reference/cell/) on CKB.
 Here's an example of how you can do that:
@@ -13,6 +11,7 @@ https://github.com/Flouse/ckb-tthw/blob/1a7508b262a5ecdc371086a55e0c080041731541
 
 ## TODO
 - [ ] implement interactive tutorial experiences
+  In this tutorial, a browser-based runtime called [WebContainers](https://webcontainers.io/) is leveraged to create a minimal development environment only in the browser to acheive interactive tutorial experiences. Let's use the latest web capabilities to deliver a nice browser-based development experience for a new generation of interactive courses.
 
     similar to
     
