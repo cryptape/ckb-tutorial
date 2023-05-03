@@ -3,17 +3,6 @@ The target of this tutorial is very simple: use [Lumos](https://github.com/ckb-j
 
 TODO: In this tutorial, a browser-based runtime called [WebContainers](https://webcontainers.io/) is leveraged to create a minimal development environment only in the browser to acheive interactive tutorial experiences. Let's use the latest web capabilities to deliver a nice browser-based development experience for a new generation of interactive courses.
 
-## Prerequisites
-1. Node.js
-
-2. Lumos
-Lumos provides a high-level API for interacting with CKB, which makes it easier to develop dApps.
-You can install Lumos by running the following command:
-
-```bash
-npm @ckb-lumos/lumos
-```
-
 ## Pseudo Code
 After installing Lumos, you can use it to send a transaction to CKB testnet, write a simple `Common Knowledge`: "Hello World" into a [cell](https://docs.nervos.org/docs/reference/cell/) on CKB.
 Here's an example of how you can do that:
