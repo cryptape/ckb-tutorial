@@ -11,7 +11,7 @@ Lumos provides a high-level API for interacting with CKB, which makes it easier 
 You can install Lumos by running the following command:
 
 ```bash
-npm install @ckb-lumos/base @ckb-lumos/indexer @ckb-lumos/common @ckb-lumos/hd-indexer @ckb-lumos/transaction @ckb-lumos/wallet
+npm @ckb-lumos/lumos
 ```
 
 ## Pseudo Code
@@ -113,8 +113,22 @@ const signAndSendTx = async (
 ## TODO
 - [ ] implement interactive tutorial experiences
 
+    similar to
+    
+    <img width="699" alt="image" src="https://user-images.githubusercontent.com/1297478/235818547-88aaf6a2-f50b-49a6-824b-b4f897bc1734.png">
+    
+    or https://learn.svelte.dev/tutorial/auto-subscriptions
+
 ## Reference
 - [Lumos Examples](https://github.com/ckb-js/lumos/blob/develop/examples)
   - Preview and interact with `simple transfer` code online through [codesandbox](https://codesandbox.io).
     https://codesandbox.io/s/github/ckb-js/lumos/tree/develop/examples/secp256k1-transfer?file=/lib.ts
-  - etc.  
+  - etc.
+
+- [Lumos docs site](https://cryptape.github.io/lumos-doc/)
+  - [Hello Lumos](https://cryptape.github.io/lumos-doc/docs/preparation/hellolumos)
+  - DApps on CKB Workshop
+    - https://cryptape.github.io/lumos-doc/docs/guides/integratenft
+    - etc.
+
+
