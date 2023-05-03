@@ -23,7 +23,11 @@ const constructHelloWorldTx = async (): Promise<lumosHelpers.TransactionSkeleton
 
   const { injectCapacity, payFeeByFeeRate } = commons.common;
   let txSkeleton = lumosHelpers.TransactionSkeleton({ cellProvider: ckbIndexer });
-  const targetCellCapacity = BigInt(32 + 20 + 1 + onChainMemo.length) * 100000000n;
+
+  // FAQ: How do you set the value of capacity in a Cell?
+  // https://docs.nervos.org/docs/essays/faq/#how-do-you-set-the-value-of-capacity-in-a-cell
+  const targetCellCapacity = BigInt(8 + 32 + 20 + 1 + onChainMemo.length) * 100000000n;
+
 
   const targetOutput: Cell = {
     cellOutput: {
