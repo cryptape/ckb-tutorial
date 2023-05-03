@@ -1,23 +1,19 @@
-import { generateAccountFromPrivateKey, ckbIndexer } from "./helper";
+import { Hash, Cell, RPC, commons, helpers as lumosHelpers, HexString, hd } from "@ckb-lumos/lumos";
+import { generateAccountFromPrivateKey, ckbIndexer, CKB_TESTNET_EXPLORER } from "./helper";
 import { CHARLIE } from "./test-keys";
-import { Hash, Cell, RPC, commons, helpers as lumosHelpers, HexString, hd, config } from "@ckb-lumos/lumos";
 import { Account } from "./type";
 
 // get a test key used for demo purposes
 const testPrivKey = CHARLIE.PRIVATE_KEY;
 
 // get the account info from the test private key
-const account: Account = generateAccountFromPrivateKey(testPrivKey);
-console.assert(account.address === CHARLIE.ADDRESS);
-console.log(`Charlie's account: ${JSON.stringify(account, undefined, 2)}`);
-const CKB_TESTNET_EXPLORER = "https://pudge.explorer.nervos.org";
-console.log(`Explorer: ${CKB_TESTNET_EXPLORER}/address/${account.address}`);
+const testAccount: Account = generateAccountFromPrivateKey(testPrivKey);
+console.assert(testAccount.address === CHARLIE.ADDRESS);
 
-// TODO: one line code to get faucet from https://faucet.nervos.org or https://github.com/Flouse/nervos-functions#faucet
-
-// create a new transaction that adds a cell with the message "Common Knowledge: Hello world!"
-const constructHelloWorldTx = async (): Promise<lumosHelpers.TransactionSkeletonType> => {
-  const onChainMemo: string = "Common Knowledge: Hello world!";
+/** create a new transaction that adds a cell with the message "Common Knowledge: Hello world!" */
+const constructHelloWorldTx = async (
+  onChainMemo: string
+): Promise<lumosHelpers.TransactionSkeletonType> => {
   const onChainMemoHex: string = "0x" + Buffer.from(onChainMemo).toString("hex");
   console.log(`onChainMemoHex: ${onChainMemoHex}`);
 
@@ -25,25 +21,24 @@ const constructHelloWorldTx = async (): Promise<lumosHelpers.TransactionSkeleton
   let txSkeleton = lumosHelpers.TransactionSkeleton({ cellProvider: ckbIndexer });
 
   // FAQ: How do you set the value of capacity in a Cell?
-  // https://docs.nervos.org/docs/essays/faq/#how-do-you-set-the-value-of-capacity-in-a-cell
+  // See: https://docs.nervos.org/docs/essays/faq/#how-do-you-set-the-value-of-capacity-in-a-cell
   const targetCellCapacity = BigInt(8 + 32 + 20 + 1 + onChainMemo.length) * 100000000n;
-
 
   const targetOutput: Cell = {
     cellOutput: {
       capacity: "0x" + targetCellCapacity.toString(16),
       // In this demo, we only want to write a message on chain, so we define the 
       // target lock script to be the test account itself.
-      lock: account.lockScript, // toScript
+      lock: testAccount.lockScript, // toScript
     },
     data: onChainMemoHex,
   };
   txSkeleton = txSkeleton.update("outputs", (outputs) => outputs.push(targetOutput));
 
-  // FIXME: The data of the input cells should be empty
+  // FIXME: The data of the input cells should be empty => don't inject memo cells
   txSkeleton = await injectCapacity(
     txSkeleton,
-    [account.address],
+    [testAccount.address],
     targetCellCapacity,
     undefined,
     undefined,
@@ -51,18 +46,15 @@ const constructHelloWorldTx = async (): Promise<lumosHelpers.TransactionSkeleton
       enableDeductCapacity: false
     }
   );
-
-  txSkeleton = await payFeeByFeeRate(txSkeleton, [account.address], 1000, undefined, {
-    enableDeductCapacity: true
+  txSkeleton = await payFeeByFeeRate(txSkeleton, [testAccount.address], 1000, undefined, {
+    enableDeductCapacity: false
   });
 
   console.debug(`txSkeleton: ${JSON.stringify(txSkeleton, undefined, 2)}`);
   return txSkeleton;
 }
 
-/**
- * Sign the prepared transaction skeleton, then send it to CKB.
- */
+/** Sign the prepared transaction skeleton, then send it to CKB. */
 const signAndSendTx = async (
   txSkeleton: lumosHelpers.TransactionSkeletonType,
   privateKey: HexString,
@@ -85,7 +77,21 @@ const signAndSendTx = async (
 }
 
 (async () => {
-  let txSkeleton = await constructHelloWorldTx();
+  // Let's use Charlie's account as a test account which is only for demo purposes,
+  // please DO NOT use it in production environments!
+  console.log(`Charlie's account: ${JSON.stringify(testAccount, undefined, 2)}`);
+  console.log(`Explorer: ${CKB_TESTNET_EXPLORER}/address/${testAccount.address}\n\n`);
+
+  // Step 1: this is the message that will be written on chain
+  const onChainMemo: string = "Common Knowledge: Hello world!";
+
+  // Step 2: construct the transaction
+  let txSkeleton = await constructHelloWorldTx(onChainMemo);
+
+  // Step 3: sign and send the transaction
   const txHash = await signAndSendTx(txSkeleton, testPrivKey);
-  console.log(`Transaction sent: ${txHash}`);
+  console.log(`Transaction ${txHash} sent.\n`);
+
+  // Done, let's see the transaction in the CKB Testnet explorer
+  console.log(`See ${CKB_TESTNET_EXPLORER}/transaction/${txHash}`);
 })();

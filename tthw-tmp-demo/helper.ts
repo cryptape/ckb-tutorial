@@ -1,7 +1,8 @@
 import { hd, config, helpers, HexString, BI, Indexer, Address } from '@ckb-lumos/lumos';
 import { Account } from './type';
 
-const CKB_TESTNET_RPC = "https://testnet.ckb.dev/rpc";
+export const CKB_TESTNET_EXPLORER = "https://pudge.explorer.nervos.org";
+export const CKB_TESTNET_RPC = "https://testnet.ckb.dev/rpc";
 export const ckbIndexer = new Indexer(CKB_TESTNET_RPC);
 
 // This tutorial uses CKB testnet.
@@ -59,4 +60,12 @@ export async function getCapacities(address: string): Promise<BI> {
   }
 
   return capacities;
+}
+
+/**
+ * Get faucet from https://github.com/Flouse/nervos-functions#faucet
+ */
+export async function getFaucet() {
+  // TODO: one line code to get faucet from https://faucet.nervos.org or https://github.com/Flouse/nervos-functions#faucet
+  throw new Error("TODO: get faucet from https://faucet.nervos.org or https://github.com/Flouse/nervos-functions#faucet");
 }
