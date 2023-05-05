@@ -58,3 +58,7 @@ In this tutorial, you learned how to write a message into a cell on CKB testnet 
 ## References
 - [CKB basic theoretical knowledge](https://ckbacademy.vercel.app/courses/basic-theory)
 - [CKB basic practical operation](https://ckbacademy.vercel.app/courses/basic-operation)
+- [Lumos Examples](https://github.com/ckb-js/lumos/blob/develop/examples)
+  - Preview and interact with `simple transfer` code online through [codesandbox](https://codesandbox.io).
+    https://codesandbox.io/s/github/ckb-js/lumos/tree/develop/examples/secp256k1-transfer?file=/lib.ts
+  - etc.
