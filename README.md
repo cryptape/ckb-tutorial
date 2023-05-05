@@ -1,6 +1,6 @@
 # Time to `Hello World` on CKB
 
-The target of this tutorial is very simple: use [Lumos](https://github.com/ckb-js/lumos) to write "Common Knowledge: Hello world!" into a cell on CKB testnet and check it on CKB explorer.
+The target of this tutorial is very simple: use CKB SDKs in various languages to write "Common Knowledge: Hello world!" into a cell on CKB testnet and check it on CKB explorer.
 
 ## Sample Code
 After installing Lumos, you can use it to send a transaction to CKB testnet, write a simple `Common Knowledge`: "Hello World" into a [cell](https://docs.nervos.org/docs/reference/cell/) on CKB.
