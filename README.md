@@ -8,6 +8,12 @@ Here's an example of how you can do that:
 
 https://github.com/Flouse/ckb-tthw/blob/dfdc7218838e29ef01507f9e368853b1ab3c6933/js/index.ts#L86-L94
 
+## Tutorials in different languages
+- [JavaScript/TypeScript](./js/)
+- [ ] Golang
+- [ ] Rust
+- [ ] Java
+- etc.
 
 ## TODO
 - [ ] implement interactive tutorial experiences
