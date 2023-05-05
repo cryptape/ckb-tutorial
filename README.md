@@ -6,7 +6,7 @@ The target of this tutorial is very simple: use [Lumos](https://github.com/ckb-j
 After installing Lumos, you can use it to send a transaction to CKB testnet, write a simple `Common Knowledge`: "Hello World" into a [cell](https://docs.nervos.org/docs/reference/cell/) on CKB.
 Here's an example of how you can do that:
 
-https://github.com/Flouse/ckb-tthw/blob/229f9332ceb1bf365e7e1ea131322001cf1b862c/tthw-tmp-demo/index.ts#L85-L96
+https://github.com/Flouse/ckb-tthw/blob/dfdc7218838e29ef01507f9e368853b1ab3c6933/js/index.ts#L86-L94
 
 
 ## TODO

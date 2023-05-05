@@ -11,7 +11,7 @@ But if you don't, there's no need to worry, just follow this tutorial step by st
 
 Although some of the complexity is wrapped up, intuitively writing "Common Knowledge: Hello World!" into a cell on CKB testnet is really just `three steps`:
 
-https://github.com/Flouse/ckb-tthw/blob/229f9332ceb1bf365e7e1ea131322001cf1b862c/tthw-tmp-demo/index.ts#L85-L96
+https://github.com/Flouse/ckb-tthw/blob/dfdc7218838e29ef01507f9e368853b1ab3c6933/js/index.ts#L86-L94
 
 ### Talk is cheap. Run the code.
 
