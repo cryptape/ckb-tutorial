@@ -1,4 +1,4 @@
-# Tutorial: Inscribe "Common Sense: Hello World!" to a Cell on CKB Testnet
+# Tutorial: Inscribe "Common Knowledge: Hello World!" to CKB Testnet
 
 In this tutorial, you will learn how to write "`Common Knowledge: Hello World!`" into a cell on CKB testnet using [Lumos](https://github.com/ckb-js/lumos), a JavaScript/TypeScript library for Nervos CKB. You will also learn how to check the transaction on CKB explorer.
 
