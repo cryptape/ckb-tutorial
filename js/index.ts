@@ -33,6 +33,7 @@ const constructHelloWorldTx = async (
     },
     data: onChainMemoHex,
   };
+  // push the target output cell into the transaction's outputs array
   txSkeleton = txSkeleton.update("outputs", (outputs) => outputs.push(targetOutput));
 
   // FIXME: The data of the input cells should be empty => don't inject memo cells
@@ -71,8 +72,8 @@ const signAndSendTx = async (
   // create a new RPC instance pointing to CKB testnet
   const rpc = new RPC("https://testnet.ckb.dev/rpc");
 
-  // send the transaction to CKB node, null and passthrough mean skipping outputs validation
-  const txHash = await rpc.sendTransaction(signedTx)
+  // send the transaction to CKB node
+  const txHash = await rpc.sendTransaction(signedTx);
   return txHash;
 }
 

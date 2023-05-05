@@ -24,9 +24,3 @@ https://github.com/Flouse/ckb-tthw/blob/229f9332ceb1bf365e7e1ea131322001cf1b862c
   - Preview and interact with `simple transfer` code online through [codesandbox](https://codesandbox.io).
     https://codesandbox.io/s/github/ckb-js/lumos/tree/develop/examples/secp256k1-transfer?file=/lib.ts
   - etc.
-
-- [Lumos docs site](https://cryptape.github.io/lumos-doc/)
-  - [Hello Lumos](https://cryptape.github.io/lumos-doc/docs/preparation/hellolumos)
-  - DApps on CKB Workshop
-    - https://cryptape.github.io/lumos-doc/docs/guides/integratenft
-    - etc.
