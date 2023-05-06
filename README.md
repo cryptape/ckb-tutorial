@@ -6,7 +6,7 @@ The target of this tutorial is very simple: use CKB SDKs in various languages to
 After installing Lumos, you can use it to send a transaction to CKB testnet, write a simple `Common Knowledge`: "Hello World" into a [cell](https://docs.nervos.org/docs/reference/cell/) on CKB.
 Here's an example of how you can do that:
 
-https://github.com/Flouse/ckb-tthw/blob/dfdc7218838e29ef01507f9e368853b1ab3c6933/js/index.ts#L86-L94
+https://github.com/Flouse/ckb-tthw/blob/ada7d3729b0f2d360e86bd8a6ed6da40397f98bb/js/index.ts#L86-L94
 
 ## Tutorials in different languages
 - [JavaScript/TypeScript](./js/)
