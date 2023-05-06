@@ -1,6 +1,6 @@
 # Time to `Hello World` on CKB
 
-The target of this tutorial is very simple: use CKB SDKs in various languages to write "Common Knowledge: Hello world!" into a cell on CKB testnet and check it on CKB explorer.
+The target of this tutorial is very simple: use CKB SDKs in various languages to write "Hello Common Knowledge Base!" into a cell on CKB testnet and check it on CKB explorer.
 
 ## Sample Code
 After installing Lumos, you can use it to send a transaction to CKB testnet, write a simple `Common Knowledge`: "Hello World" into a [cell](https://docs.nervos.org/docs/reference/cell/) on CKB.
@@ -26,7 +26,3 @@ https://github.com/Flouse/ckb-tthw/blob/dfdc7218838e29ef01507f9e368853b1ab3c6933
     or https://learn.svelte.dev/tutorial/auto-subscriptions
 
 ## Reference
-- [Lumos Examples](https://github.com/ckb-js/lumos/blob/develop/examples)
-  - Preview and interact with `simple transfer` code online through [codesandbox](https://codesandbox.io).
-    https://codesandbox.io/s/github/ckb-js/lumos/tree/develop/examples/secp256k1-transfer?file=/lib.ts
-  - etc.

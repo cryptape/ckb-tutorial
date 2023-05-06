@@ -10,7 +10,7 @@ const testPrivKey = CHARLIE.PRIVATE_KEY;
 const testAccount: Account = generateAccountFromPrivateKey(testPrivKey);
 console.assert(testAccount.address === CHARLIE.ADDRESS);
 
-/** create a new transaction that adds a cell with the message "Common Knowledge: Hello world!" */
+/** create a new transaction that adds a cell with the message "Hello Common Knowledge Base!" */
 const constructHelloWorldTx = async (
   onChainMemo: string
 ): Promise<lumosHelpers.TransactionSkeletonType> => {
@@ -84,7 +84,7 @@ const signAndSendTx = async (
   console.log(`Explorer: ${CKB_TESTNET_EXPLORER}/address/${testAccount.address}\n\n`);
 
   // Step 1: this is the message that will be written on chain
-  const onChainMemo: string = "Common Knowledge: Hello world!";
+  const onChainMemo: string = "Hello Common Knowledge Base!";
 
   // Step 2: construct the transaction
   let txSkeleton = await constructHelloWorldTx(onChainMemo);

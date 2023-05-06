@@ -1,6 +1,6 @@
-# Tutorial: Inscribe "Common Knowledge: Hello World!" to CKB Testnet
+# Tutorial: Inscribe "Hello Common Knowledge Base!" to CKB Testnet
 
-In this tutorial, you will learn how to write "`Common Knowledge: Hello World!`" into a cell on CKB testnet using [Lumos](https://github.com/ckb-js/lumos), a JavaScript/TypeScript library for Nervos CKB. You will also learn how to check the transaction on CKB explorer.
+In this tutorial, you will learn how to write "`Hello Common Knowledge Base!`" into a cell on CKB testnet using [Lumos](https://github.com/ckb-js/lumos), a JavaScript/TypeScript library for Nervos CKB. You will also learn how to check the transaction on CKB explorer.
 
 ## Prerequisites
 Before we begin, it is better that you have some basic knowledge of [Nervos CKB](https://ckbacademy.vercel.app/courses/basic-theory).
@@ -9,7 +9,7 @@ But if you don't, there's no need to worry, just follow this tutorial step by st
 
 ## Only 3 Steps
 
-Although some of the complexity is wrapped up, intuitively writing "Common Knowledge: Hello World!" into a cell on CKB testnet is really just `three steps`:
+Although some of the complexity is wrapped up, intuitively writing "Hello Common Knowledge Base!" into a cell on CKB testnet is really just `three steps`:
 
 https://github.com/Flouse/ckb-tthw/blob/dfdc7218838e29ef01507f9e368853b1ab3c6933/js/index.ts#L86-L94
 
@@ -49,7 +49,7 @@ This function is self-explanatory:
 
 ### Check the message on CKB explorer
 ![Check the message on CKB explorer](https://user-images.githubusercontent.com/1297478/236415697-c3a49e0d-eb8f-473e-a0c1-a587c20e5a42.png)
-The cell data is the hex format of "Common Knowledge: Hello world!".
+The cell data is the hex format of "Hello Common Knowledge Base!".
 
 
 ## Conclusion
