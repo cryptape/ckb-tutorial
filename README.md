@@ -1,10 +1,9 @@
 # Time to `Hello World` on CKB
 
-The target of this tutorial is very simple: use CKB SDKs in various languages to write "Hello Common Knowledge Base!" into a cell on CKB testnet and check it on CKB explorer.
+The target of this tutorial is very simple: use CKB SDKs in various languages to write "Hello Common Knowledge Base!" into a [cell](https://docs.nervos.org/docs/reference/cell/) on CKB testnet and check it on CKB explorer.
 
 ## Sample Code
-After installing Lumos, you can use it to send a transaction to CKB testnet, write a simple `Common Knowledge`: "Hello World" into a [cell](https://docs.nervos.org/docs/reference/cell/) on CKB.
-Here's an example of how you can do that:
+Here's an example of how to write an on-chain message:
 
 https://github.com/Flouse/ckb-tthw/blob/ada7d3729b0f2d360e86bd8a6ed6da40397f98bb/js/index.ts#L86-L94
 
