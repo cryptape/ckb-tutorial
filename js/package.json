@@ -1,11 +1,11 @@
 {
   "name": "ckb-tthw",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Time to `Hello World` on CKB",
   "main": "index.js",
   "scripts": {
     "start": "ts-node ./index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,8 @@
     "@ckb-lumos/lumos": "0.20.0-alpha.2"
   },
   "devDependencies": {
+    "@jest/globals": "^29.5.0",
+    "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
   }
