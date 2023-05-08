@@ -48,8 +48,9 @@ This function is self-explanatory:
 2. Send the signed transaction to CKB testnet.
 
 ### Check the message on CKB explorer
-![Check the message on CKB explorer](https://user-images.githubusercontent.com/1297478/236415697-c3a49e0d-eb8f-473e-a0c1-a587c20e5a42.png)
-The cell data is the hex format of "Hello Common Knowledge Base!".
+![Check the message on CKB explorer](https://user-images.githubusercontent.com/1297478/236855817-af2158b4-22f9-4321-b9c6-7b00b474bda9.png)
+The cell data is the hexadecimal format of "Hello Common Knowledge Base!".
+You might want to query https://www.ascii-code.com to check for the on-chain message.
 
 
 ## Conclusion

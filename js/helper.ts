@@ -111,7 +111,7 @@ export async function collectInputCells(
  */
 export function addWitness(
   txSkeleton: lumosHelpers.TransactionSkeletonType,
-  _fromScript: Script
+  // _fromScript: Script
 ): lumosHelpers.TransactionSkeletonType {
   const firstLockInputIndex = 0;
 
