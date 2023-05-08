@@ -93,7 +93,7 @@ const constructHelloWorldTx = async (
   console.debug(`txSkeleton: ${JSON.stringify(txSkeleton, undefined, 2)}`);
   return txSkeleton;
 }
-  
+
 /** sign the prepared transaction skeleton, then send it to a CKB node. */
 const signAndSendTx = async (
   txSkeleton: lumosHelpers.TransactionSkeletonType,

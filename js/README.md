@@ -11,7 +11,7 @@ But if you don't, there's no need to worry, just follow this tutorial step by st
 
 Although some of the complexity is wrapped up, intuitively writing "Hello Common Knowledge Base!" into a cell on CKB testnet is really just `three steps`:
 
-https://github.com/Flouse/ckb-tthw/blob/ada7d3729b0f2d360e86bd8a6ed6da40397f98bb/js/index.ts#L86-L97
+https://github.com/Flouse/ckb-tthw/blob/42bf1b5a3566e2d8adf6ef79aad8580de0d79281/js/index.ts#L125-L136
 
 ### Talk is cheap. Run the code.
 

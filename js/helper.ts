@@ -106,12 +106,12 @@ export async function collectInputCells(
 }
 
 /**
- * the first witness of the fromAddress script has a WitnessArgs
- * constructed with 65-byte zero filled values
+ * add the first witness for the fromAddress script,
+ * which has a WitnessArgs constructed with 65-byte zero filled values
  */
 export function addWitness(
   txSkeleton: lumosHelpers.TransactionSkeletonType,
-  // TODO: fromScript: Script
+  _fromScript: Script
 ): lumosHelpers.TransactionSkeletonType {
   const firstLockInputIndex = 0;
 
