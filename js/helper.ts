@@ -150,6 +150,10 @@ export function calculateTxFee(
   return fee * ratio < base ? fee + 1n: fee;
 }
 
+export function encodeStringToHex(str: string): HexString {
+  return "0x" + Buffer.from(str).toString("hex");
+}
+
 /**
  * Get faucet from https://github.com/Flouse/nervos-functions#faucet
  */

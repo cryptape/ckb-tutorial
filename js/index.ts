@@ -1,7 +1,7 @@
 import { Hash, Cell, RPC, commons, helpers as lumosHelpers, HexString, hd } from "@ckb-lumos/lumos";
 import { minimalScriptCapacity } from "@ckb-lumos/helpers"
 import {
-  CKB_TESTNET_EXPLORER, TESTNET_SCRIPTS, 
+  CKB_TESTNET_EXPLORER, TESTNET_SCRIPTS, encodeStringToHex,
   generateAccountFromPrivateKey, ckbIndexer, collectInputCells, calculateTxFee, addWitness
 } from "./helper";
 import { CHARLIE } from "./test-keys";
@@ -22,7 +22,7 @@ console.assert(testAccount.address === CHARLIE.ADDRESS);
 const constructHelloWorldTx = async (
   onChainMemo: string
 ): Promise<lumosHelpers.TransactionSkeletonType> => {
-  const onChainMemoHex: string = "0x" + Buffer.from(onChainMemo).toString("hex");
+  const onChainMemoHex: HexString = encodeStringToHex(onChainMemo);
   console.log(`onChainMemoHex: ${onChainMemoHex}`);
 
   // CapacityUnit.Byte = 100000000, because 1 CKB = 100000000 shannon
