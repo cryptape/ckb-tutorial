@@ -25,8 +25,8 @@ npm install
 # Let's run it.
 npm run start
 # Result
-# Transaction 0xad66eb1d076cfef73a98a8b76e6bc6c21b2c564011c30e0436de2f5f89579c84 sent.
-# See https://pudge.explorer.nervos.org/transaction/0x57ff3a724b41808d1bae9a7d611956145542cd70cd2e1c6c43dab34ab28b9ea7
+# Transaction 0x39d6d7b6129b7e418c9ea6a353a5d85eb69f9ee5b4c7c43223fe0fad2b0e6200 sent.
+# See https://pudge.explorer.nervos.org/transaction/0x39d6d7b6129b7e418c9ea6a353a5d85eb69f9ee5b4c7c43223fe0fad2b0e6200
 ```
 <!-- TODO: add result image -->
 Would you like to change `onChainMemo` string and re-run it again?
