@@ -35,7 +35,7 @@
     "split.js": "^1.6.5",
     "undici": "^5.15.1",
     "webcontainer-utils": "^0.0.1",
-    "xterm": "^5.1.0",
+    "xterm": "^5.1.0"
   },
   "engines": {
     "node": ">=16.8"
