@@ -11,7 +11,7 @@ But if you don't, there's no need to worry, just follow this tutorial step by st
 
 Although some of the complexity is wrapped up, intuitively writing "Hello Common Knowledge Base!" into a cell on CKB testnet is really just `three steps`:
 
-https://github.com/Flouse/ckb-tthw/blob/ada7d3729b0f2d360e86bd8a6ed6da40397f98bb/js/index.ts#L86-L94
+https://github.com/Flouse/ckb-tthw/blob/42bf1b5a3566e2d8adf6ef79aad8580de0d79281/js/index.ts#L125-L136
 
 ### Talk is cheap. Run the code.
 
@@ -38,9 +38,9 @@ Let's dive into two functions that take up most of the code space. The [code and
 This function creates a new transaction that adds a cell with the proposed on-chain message.
 
 1. Create a transaction skeleton that serves as a blueprint for the final transaction.
-Define the output cell, which includes the capacity and lock script, and add it to the transaction skeleton, which is a mutable data structure used to construct a CKB transaction incrementally.
-2. Modify the transaction skeleton to include the necessary capacity to cover the output cell by injecting enough input cells.
-3. Pay the transaction fee by `payFeeByFeeRate` function, again, provided by Lumos.
+2. Define the output cell, which includes the capacity and lock script, and add it to the transaction skeleton, which is a mutable data structure used to construct a CKB transaction incrementally.
+3. Modify the transaction skeleton to include the necessary capacity to cover the output cell by injecting enough input cells.
+4. Pay the transaction fee by `payFeeByFeeRate` function, again, provided by Lumos.
 
 ### Function `signAndSendTx`
 This function is self-explanatory:
@@ -48,8 +48,9 @@ This function is self-explanatory:
 2. Send the signed transaction to CKB testnet.
 
 ### Check the message on CKB explorer
-![Check the message on CKB explorer](https://user-images.githubusercontent.com/1297478/236415697-c3a49e0d-eb8f-473e-a0c1-a587c20e5a42.png)
-The cell data is the hex format of "Hello Common Knowledge Base!".
+![Check the message on CKB explorer](https://user-images.githubusercontent.com/1297478/236855817-af2158b4-22f9-4321-b9c6-7b00b474bda9.png)
+The cell data is the hexadecimal format of "Hello Common Knowledge Base!".
+You might want to query https://www.ascii-code.com to check for the on-chain message.
 
 
 ## Conclusion
