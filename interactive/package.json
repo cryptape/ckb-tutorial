@@ -36,7 +36,6 @@
     "undici": "^5.15.1",
     "webcontainer-utils": "^0.0.1",
     "xterm": "^5.1.0",
-    "xterm-addon-fit": "^0.7.0"
   },
   "engines": {
     "node": ">=16.8"

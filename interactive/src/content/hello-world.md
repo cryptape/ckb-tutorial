@@ -3,30 +3,62 @@
 In this tutorial, you will learn how to write "`Hello Common Knowledge Base!`" into a cell on CKB testnet using [Lumos](https://github.com/ckb-js/lumos), a JavaScript/TypeScript library for Nervos CKB. You will also learn how to check the transaction on CKB explorer.
 
 ## Prerequisites
-Before we begin, it is better that you have some basic knowledge of [Nervos CKB](https://ckbacademy.vercel.app/courses/basic-theory).
-But if you don't, there's no need to worry, just follow this tutorial step by step.
+Before we begin, it is better that you have some basic knowledge of
+- [Nervos CKB](https://ckbacademy.vercel.app/courses/basic-theory).
+- [Typescript](https://www.typescriptlang.org/)
+  But if you don't, there's no need to worry, just follow this tutorial step by step.
+- This tutorial supports running code in the browser, but your browser needs to support [Web Containers](https://webcontainers.io/)
 
+
+## Installation
+
+``` bash
+# Install dependences such as @ckb-lumos, etc.
+# Enter the command in the Terminal at the bottom right of the screen
+npm install
+```
 
 ## Only 3 Steps
 
-Although some of the complexity is wrapped up, intuitively writing "Hello Common Knowledge Base!" into a cell on CKB testnet is really just `three steps`:
+Although some of the complexity is wrapped up, intuitively writing "Hello Common Knowledge Base!" into a cell on CKB testnet is really just `three steps`, If you're confused about the methods used, don't worry, we'll explain in detail what each method does later on.
 
-https://github.com/Flouse/ckb-tthw/blob/42bf1b5a3566e2d8adf6ef79aad8580de0d79281/js/index.ts#L125-L136
+### step 1
+``` typescript
+//index.ts
+// Step 1: this is the message that will be written on chain
+const onChainMemo: string = "Hello Common Knowledge Base!";
+```
+
+### step 2
+``` typescript
+//index.ts
+// Step 2: construct the transaction
+let txSkeleton = await constructHelloWorldTx(onChainMemo);
+```
+
+### step 3
+``` typescript
+//index.ts
+// Step 3: sign and send the transaction
+const txHash = await signAndSendTx(txSkeleton, testPrivKey);
+console.log(`Transaction ${txHash} sent.\n`);
+
+// Done, let's see the transaction in CKB Testnet Explorer
+console.log(`See ${CKB_TESTNET_EXPLORER}/transaction/${txHash}`);
+```
+
+> You could find the full code [here](https://github.com/Flouse/ckb-tthw/blob/42bf1b5a3566e2d8adf6ef79aad8580de0d79281/js/index.ts#L125-L136), or view the current code through the code editor at the top right of the screen.
+
 
 ### Talk is cheap. Run the code.
 
-```bash
-git clone https://github.com/Flouse/ckb-tthw.git
-cd ckb-tthw/js
-
-# Install dependences such as @ckb-lumos, etc.
-npm install
-
+``` bash
 # Let's run it.
+# Enter the command in the Terminal at the bottom right of the screen
 npm run start
 # Result
-# Transaction 0x39d6d7b6129b7e418c9ea6a353a5d85eb69f9ee5b4c7c43223fe0fad2b0e6200 sent.
-# See https://pudge.explorer.nervos.org/transaction/0x39d6d7b6129b7e418c9ea6a353a5d85eb69f9ee5b4c7c43223fe0fad2b0e6200
+# Transaction 0xad66eb1d076cfef73a98a8b76e6bc6c21b2c564011c30e0436de2f5f89579c84 sent.
+# See https://pudge.explorer.nervos.org/transaction/0x57ff3a724b41808d1bae9a7d611956145542cd70cd2e1c6c43dab34ab28b9ea7
 ```
 
 Would you like to change `onChainMemo` string and re-run it again?
@@ -50,6 +82,7 @@ This function is self-explanatory:
 ### Check the message on CKB explorer
 ![Check the message on CKB explorer](https://user-images.githubusercontent.com/1297478/236855817-af2158b4-22f9-4321-b9c6-7b00b474bda9.png)
 The cell data is the hexadecimal format of "Hello Common Knowledge Base!".
+
 You might want to query https://www.ascii-code.com to check for the on-chain message.
 
 
