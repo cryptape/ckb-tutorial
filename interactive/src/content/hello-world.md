@@ -1,96 +1,103 @@
-# Tutorial: Inscribe Messages on CKB in 3 Easy Steps
+# Mission: Inscribing "Hello Common Knowledge Base!" on CKB
 
-With this tutorial, you'll be able to write "`Hello Common Knowledge Base!`" (or any message) into a [cell](https://docs.nervos.org/docs/reference/cell/) on CKB testnet using [Lumos](https://github.com/ckb-js/lumos), a versatile JavaScript/TypeScript library developed specifically for Nervos CKB. Additionally, you'll learn how to verify your transaction on the [CKB explorer](https://explorer.nervos.org/).
+Welcome, brave coder! Your mission, should you choose to accept it, involves inscribing the message `"Hello Common Knowledge Base!"` into a [cell](https://docs.nervos.org/docs/reference/cell/) on the CKB testnet using the mighty [Lumos](https://github.com/ckb-js/lumos), a powerful JavaScript/TypeScript library crafted specifically for Nervos CKB. Once you've accomplished your mission, you'll uncover and verify the message on the [CKB explorer](https://explorer.nervos.org/).
 
-## Prerequisites
-Before we start, make sure your browser support [in-browser coding](https://webcontainers.io/) and it's helpful if you have a basic understanding of:
+## Pre-mission Training
 
-- Nervos CKB
-- TypeScript
+Before embarking on your mission, it's beneficial to familiarize yourself with:
 
-However, if you're new to these concepts, don't fret! This tutorial is designed to guide you through each step. 
+- [Nervos CKB](https://ckbacademy.vercel.app/courses/basic-theory)
+- [TypeScript](https://www.typescriptlang.org/)
 
-## 1. Installation
+However, if you're a rookie, fear not! This mission is designed to equip you with the necessary skills, step by step. Note that your browser should support [Web Containers](https://webcontainers.io/) for an optimal experience.
 
-To get started, you'll need to install dependencies, including @ckb-lumos. Enter the following command in your terminal:
+
+## Preparation
+
+First, gear up! Install your mission-critical dependencies, including [ckb-lumos](https://github.com/ckb-js/lumos), with this command in your terminal:
 
 ```bash
 npm install
 ```
-## 2. Execute
-We've simplified some complexities created all the functions for you. The program you will execute writes "Hello Common Knowledge Base!" (or any message) into a cell on the CKB testnet in three steps. Here's a shallow dive of the methods working *magic*:
+## The Action
 
-Step 1 (这些step有办法连着code editor 的位置or行数吗）
+We've prepared a guide to help you navigate the complex magic involved. The script you'll use inscribes messages into a cell on the CKB testnet in three key stages. Here's a quick overview:
 
-Define the message that will be written on-chain in a index.ts file:
+**Stage 1: Preparing the Message**
+
+In your sacred index.ts scroll, craft the message that will be inscribed on-chain:
 
 ```typescript
 const onChainMemo: string = "Hello Common Knowledge Base!";
 ```
-Step 2
-
+**Stage 2: Weaving the Spell**
 Construct the transaction:
 
 ```typescript
 let txSkeleton = await constructHelloWorldTx(onChainMemo);
 ```
-Step 3
+**Stage 3: Casting the Spell**
 
-Sign and send the transaction:
+Sign the transaction and unleash it onto the network:
 
 ```typescript
 const txHash = await signAndSendTx(txSkeleton, testPrivKey);
 console.log(`Transaction ${txHash} sent.\n`);
 console.log(`Verify it on CKB Testnet Explorer: ${CKB_TESTNET_EXPLORER}/transaction/${txHash}`);
 ```
-The full code is available [here](https://github.com/Flouse/ckb-tthw/blob/42bf1b5a3566e2d8adf6ef79aad8580de0d79281/js/index.ts#L125-L136). You can also access it through the code editor in the top right of your screen.
+The full spellbook can be found [here](https://github.com/Flouse/ckb-tthw/blob/42bf1b5a3566e2d8adf6ef79aad8580de0d79281/js/index.ts#L125-L136). You can also access it through the magical portal (code editor) in the top right of your screen.
 
-### Talk is cheap. Run the code.
-Now to execute the program. Enter the following command in your terminal:
+### Time to put your magic to the test. 
+To execute the program, enter the following command in your terminal:
 
 ```bash
 npm run start
 ```
-Output should provide a URL for where your transaction can be verifed on the explorer.
-## 3. Verify
-For example:
+Your output should provide a URL for where your spell's effects (transaction) can be verifed on the explorer.
+
+## Verification
+Example output:
 ```
 # Result
 # Transaction 0x39d6d7b6129b7e418c9ea6a353a5d85eb69f9ee5b4c7c43223fe0fad2b0e6200 sent.
 # See https://pudge.explorer.nervos.org/transaction/0x39d6d7b6129b7e418c9ea6a353a5d85eb69f9ee5b4c7c43223fe0fad2b0e6200
 ```
 
-Verify your message on the CKB Explorer by 
+Uncover your message on the CKB Explorer by 
 1. Going to your output URL
-2. Click on `Cell Info` of `Output#0`, go to `Data`
+2. Click on `Cell Info` of `Output#0`, then go to the `Data` tab
 3. Copy the number string after `0x`
-4. Paste in [CypherChef's magic tool](https://gchq.github.io/CyberChef/#recipe=From_Hex('None')&input=NjE2ZTZlNjk2NTZl) to decode.
+4. Paste it into [CypherChef's magic tool](https://gchq.github.io/CyberChef/#recipe=From_Hex('None')&input=NjE2ZTZlNjk2NTZl) to decode.
 
-Voilà! Congrats, you did it!
+Congrats! You've done it!! 
+What message will you send next?
+Try changing the `onChainMemo` string to any message and run the mission again!!
 
-<!-- TODO: add result image -->
-Try changing the `onChainMemo` string to any message and run it again!!
+## Mission Debriefing
 
-## Want a deep dive into the code?
+After successfully completing the mission, it's time for a debrief. We'll take a closer look at the key elements of your mission tools: `constructHelloWorldTx` and `signAndSendTx`.
 
-Let's take a closer look at two functions that constitute the majority of our code: `constructHelloWorldTx` and `signAndSendTx`.
+`constructHelloWorldTx` creates a new transaction that includes a cell carrying the mission message. It follows these steps:
 
-### Function `constructHelloWorldTx`
-Creates a new transaction that includes a cell with the specified on-chain message. Here's the sequence of actions it performs:
+1. Sets up a transaction structure, the blueprint of the final transaction.
+2. Defines the output cell and includes it in the transaction structure.
+3. Adjusts the transaction structure to cover the output cell's capacity requirements.
+4. Pays the transaction fee using Lumos' `payFeeByFeeRate` function.
 
-1. Creates a transaction skeleton, which acts as a blueprint for the final transaction.
-2. Defines the output cell, including its capacity and lock script, and adds it to the transaction skeleton.
-3. Modifies the transaction skeleton to cover the output cell's necessary capacity by injecting sufficient input cells.
-4. Pays the transaction fee with the `payFeeByFeeRate` function by Lumos.
-Function signAndSendTx
 
-### Function `signAndSendTx`
-Performs two main actions:
-1. Signs the transaction skeleton using a test private key.
+`signAndSendTx` has two main functions:
+
+1. Signs the transaction skeleton with a test private key.
 2. Sends the signed transaction to the CKB testnet.
 
-## Wrap-up
-Congratulations! You've learned how to inscribe a message into a cell on the CKB testnet using Lumos and how to verify your transaction on the CKB explorer. Lumos offers a suite of helper functions that simplify interactions with the CKB blockchain, making it easy to create, sign, and send transactions. What message will you send next?
+## Mission Accomplished!
+
+Well done! You've successfully completed your mission, leaving your mark on the CKB testnet using Lumos. With the Lumos toolkit, you've been able to create, sign, and send a transaction to the CKB blockchain with ease.
+
+Ready for your next mission?
+
+Keep coding, keep exploring, and keep making a difference. See you on the blockchain!
+
 
 ## References
 - [CKB basic theoretical knowledge](https://ckbacademy.vercel.app/courses/basic-theory)
