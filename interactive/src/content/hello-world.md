@@ -1,98 +1,101 @@
-## Inscribe "Hello Common Knowledge Base!" to CKB Testnet
+# Tutorial: Inscribe Messages on CKB in 3 Easy Steps
 
-In this tutorial, you will learn how to write "`Hello Common Knowledge Base!`" into a cell on CKB testnet using [Lumos](https://github.com/ckb-js/lumos), a JavaScript/TypeScript library for Nervos CKB. You will also learn how to check the transaction on CKB explorer.
+With this tutorial, you'll be able to write "`Hello Common Knowledge Base!`" (or any message) into a [cell](https://docs.nervos.org/docs/reference/cell/) on CKB testnet using [Lumos](https://github.com/ckb-js/lumos), a versatile JavaScript/TypeScript library developed specifically for Nervos CKB. Additionally, you'll learn how to verify your transaction on the [CKB explorer](https://explorer.nervos.org/).
 
 ## Prerequisites
-Before we begin, it is better that you have some basic knowledge of
-- [Nervos CKB](https://ckbacademy.vercel.app/courses/basic-theory).
-- [Typescript](https://www.typescriptlang.org/)
-  But if you don't, there's no need to worry, just follow this tutorial step by step.
-- This tutorial supports running code in the browser, but your browser needs to support [Web Containers](https://webcontainers.io/)
+Before we start, make sure your browser support [in-browser coding](https://webcontainers.io/) and it's helpful if you have a basic understanding of:
 
+- Nervos CKB
+- TypeScript
 
-## Installation
+However, if you're new to these concepts, don't fret! This tutorial is designed to guide you through each step. 
 
-``` bash
-# Install dependences such as @ckb-lumos, etc.
-# Enter the command in the Terminal at the bottom right of the screen
+## 1. Installation
+
+To get started, you'll need to install dependencies, including @ckb-lumos. Enter the following command in your terminal:
+
+```bash
 npm install
 ```
+## 2. Execute
+We've simplified some complexities created all the functions for you. The program you will execute writes "Hello Common Knowledge Base!" (or any message) into a cell on the CKB testnet in three steps. Here's a shallow dive of the methods working *magic*:
 
-## Only 3 Steps
+Step 1 (这些step有办法连着code editor 的位置or行数吗）
 
-Although some of the complexity is wrapped up, intuitively writing "Hello Common Knowledge Base!" into a cell on CKB testnet is really just `three steps`, If you're confused about the methods used, don't worry, we'll explain in detail what each method does later on.
+Define the message that will be written on-chain in a index.ts file:
 
-### step 1
-``` typescript
-//index.ts
-// Step 1: this is the message that will be written on chain
+```typescript
 const onChainMemo: string = "Hello Common Knowledge Base!";
 ```
+Step 2
 
-### step 2
-``` typescript
-//index.ts
-// Step 2: construct the transaction
+Construct the transaction:
+
+```typescript
 let txSkeleton = await constructHelloWorldTx(onChainMemo);
 ```
+Step 3
 
-### step 3
-``` typescript
-//index.ts
-// Step 3: sign and send the transaction
+Sign and send the transaction:
+
+```typescript
 const txHash = await signAndSendTx(txSkeleton, testPrivKey);
 console.log(`Transaction ${txHash} sent.\n`);
-
-// Done, let's see the transaction in CKB Testnet Explorer
-console.log(`See ${CKB_TESTNET_EXPLORER}/transaction/${txHash}`);
+console.log(`Verify it on CKB Testnet Explorer: ${CKB_TESTNET_EXPLORER}/transaction/${txHash}`);
 ```
-
-> You could find the full code [here](https://github.com/Flouse/ckb-tthw/blob/42bf1b5a3566e2d8adf6ef79aad8580de0d79281/js/index.ts#L125-L136), or view the current code through the code editor at the top right of the screen.
-
+The full code is available [here](https://github.com/Flouse/ckb-tthw/blob/42bf1b5a3566e2d8adf6ef79aad8580de0d79281/js/index.ts#L125-L136). You can also access it through the code editor in the top right of your screen.
 
 ### Talk is cheap. Run the code.
+Now to execute the program. Enter the following command in your terminal:
 
-``` bash
-# Let's run it.
-# Enter the command in the Terminal at the bottom right of the screen
+```bash
 npm run start
+```
+Output should provide a URL for where your transaction can be verifed on the explorer.
+## 3. Verify
+For example:
+```
 # Result
-# Transaction 0xad66eb1d076cfef73a98a8b76e6bc6c21b2c564011c30e0436de2f5f89579c84 sent.
-# See https://pudge.explorer.nervos.org/transaction/0x57ff3a724b41808d1bae9a7d611956145542cd70cd2e1c6c43dab34ab28b9ea7
+# Transaction 0x39d6d7b6129b7e418c9ea6a353a5d85eb69f9ee5b4c7c43223fe0fad2b0e6200 sent.
+# See https://pudge.explorer.nervos.org/transaction/0x39d6d7b6129b7e418c9ea6a353a5d85eb69f9ee5b4c7c43223fe0fad2b0e6200
 ```
 
-Would you like to change `onChainMemo` string and re-run it again?
+Verify your message on the CKB Explorer by 
+1. Going to your output URL
+2. Click on `Cell Info` of `Output#0`, go to `Data`
+3. Copy the number string after `0x`
+4. Paste in [CypherChef's magic tool](https://gchq.github.io/CyberChef/#recipe=From_Hex('None')&input=NjE2ZTZlNjk2NTZl) to decode.
 
-## Show me the code
-Let's dive into two functions that take up most of the code space. The [code and comments](./index.ts) are quite self-explained.
+Voilà! Congrats, you did it!
+
+<!-- TODO: add result image -->
+Try changing the `onChainMemo` string to any message and run it again!!
+
+## Want a deep dive into the code?
+
+Let's take a closer look at two functions that constitute the majority of our code: `constructHelloWorldTx` and `signAndSendTx`.
 
 ### Function `constructHelloWorldTx`
-This function creates a new transaction that adds a cell with the proposed on-chain message.
+Creates a new transaction that includes a cell with the specified on-chain message. Here's the sequence of actions it performs:
 
-1. Create a transaction skeleton that serves as a blueprint for the final transaction.
-2. Define the output cell, which includes the capacity and lock script, and add it to the transaction skeleton, which is a mutable data structure used to construct a CKB transaction incrementally.
-3. Modify the transaction skeleton to include the necessary capacity to cover the output cell by injecting enough input cells.
-4. Pay the transaction fee by `payFeeByFeeRate` function, again, provided by Lumos.
+1. Creates a transaction skeleton, which acts as a blueprint for the final transaction.
+2. Defines the output cell, including its capacity and lock script, and adds it to the transaction skeleton.
+3. Modifies the transaction skeleton to cover the output cell's necessary capacity by injecting sufficient input cells.
+4. Pays the transaction fee with the `payFeeByFeeRate` function by Lumos.
+Function signAndSendTx
 
 ### Function `signAndSendTx`
-This function is self-explanatory:
-1. Sign the transaction skeleton using a test private key.
-2. Send the signed transaction to CKB testnet.
+Performs two main actions:
+1. Signs the transaction skeleton using a test private key.
+2. Sends the signed transaction to the CKB testnet.
 
-### Check the message on CKB explorer
-![Check the message on CKB explorer](https://user-images.githubusercontent.com/1297478/236855817-af2158b4-22f9-4321-b9c6-7b00b474bda9.png)
-The cell data is the hexadecimal format of "Hello Common Knowledge Base!".
-
-You might want to query https://www.ascii-code.com to check for the on-chain message.
-
-
-## Conclusion
-In this tutorial, you learned how to write a message into a cell on CKB testnet using Lumos. You also learned how to check the transaction on CKB explorer. Lumos provides a set of helper functions that make it easy to interact with the CKB blockchain. With Lumos, you can easily create, sign, and send transactions to the CKB blockchain.
+## Wrap-up
+Congratulations! You've learned how to inscribe a message into a cell on the CKB testnet using Lumos and how to verify your transaction on the CKB explorer. Lumos offers a suite of helper functions that simplify interactions with the CKB blockchain, making it easy to create, sign, and send transactions. What message will you send next?
 
 ## References
 - [CKB basic theoretical knowledge](https://ckbacademy.vercel.app/courses/basic-theory)
 - [CKB basic practical operation](https://ckbacademy.vercel.app/courses/basic-operation)
 - [Lumos Examples](https://github.com/ckb-js/lumos/blob/develop/examples)
-    - Preview and interact with `simple transfer` code online through [codesandbox](https://codesandbox.io).
-      https://codesandbox.io/s/github/ckb-js/lumos/tree/develop/examples/secp256k1-transfer?file=/lib.ts
-    - etc.
+  - Preview and interact with `simple transfer` code online through [codesandbox](https://codesandbox.io).
+    https://codesandbox.io/s/github/ckb-js/lumos/tree/develop/examples/secp256k1-transfer?file=/lib.ts
+  - etc.
