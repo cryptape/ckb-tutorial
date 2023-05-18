@@ -56,7 +56,7 @@ This function is self-explanatory:
 The cell data is the hexadecimal format of "Hello Common Knowledge Base!".
 
 You might want to uncover your message on CKB Explorer by
-1. Going to your output [URL](https://pudge.explorer.nervos.org/transaction/0x39d6d7b6129b7e418c9ea6a353a5d85eb69f9ee5b4c7c43223fe0fad2b0e6200)
+1. Go to your output [URL](https://pudge.explorer.nervos.org/transaction/0x39d6d7b6129b7e418c9ea6a353a5d85eb69f9ee5b4c7c43223fe0fad2b0e6200)
 2. Click on Cell Info of Output#0, then go to the `Data tab`
 3. Copy the number string after `0x`
 4. Paste it into [CypherChef's magic tool](https://gchq.github.io/CyberChef/#recipe=From_Hex('None')&input=NDg2NTZjNmM2ZjIwNDM2ZjZkNmQ2ZjZlMjA0YjZlNmY3NzZjNjU2NDY3NjUyMDQyNjE3MzY1MjE) to decode.
