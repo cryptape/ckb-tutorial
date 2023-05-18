@@ -1,11 +1,15 @@
-# Tutorial: Inscribe "Hello Common Knowledge Base!" to CKB Testnet
+# Mission: Inscribing "Hello Common Knowledge Base!" on CKB
 
-In this tutorial, you will learn how to write "`Hello Common Knowledge Base!`" into a cell on CKB testnet using [Lumos](https://github.com/ckb-js/lumos), a JavaScript/TypeScript library for Nervos CKB. You will also learn how to check the transaction on CKB explorer.
+Welcome, brave coder! Your mission, should you choose to accept it, involves inscribing the message `"Hello Common Knowledge Base!"` into a [cell](https://docs.nervos.org/docs/reference/cell/) on the CKB testnet using the mighty [Lumos](https://github.com/ckb-js/lumos), a powerful JavaScript/TypeScript library crafted specifically for Nervos CKB. Once you've accomplished your mission, you'll uncover and verify the message on the [CKB explorer](https://explorer.nervos.org/).
 
-## Prerequisites
-Before we begin, it is better that you have some basic knowledge of [Nervos CKB](https://ckbacademy.vercel.app/courses/basic-theory).
-But if you don't, there's no need to worry, just follow this tutorial step by step.
+## Pre-mission Training
 
+Before embarking on your mission, it's beneficial to familiarize yourself with:
+
+- [Nervos CKB](https://ckbacademy.vercel.app/courses/basic-theory)
+- [TypeScript](https://www.typescriptlang.org/)
+
+However, if you're a rookie, fear not! This mission is designed to equip you with the necessary skills, step by step.
 
 ## Only 3 Steps
 
