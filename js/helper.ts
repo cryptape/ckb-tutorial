@@ -1,9 +1,20 @@
-import {
-  hd, config, helpers as lumosHelpers, HexString, BI, Indexer, Address, Script, Cell, Transaction, WitnessArgs
-} from '@ckb-lumos/lumos';
-import { blockchain } from '@ckb-lumos/base'
+import { blockchain } from '@ckb-lumos/base';
 import { bytes } from "@ckb-lumos/codec";
+import {
+  Address,
+  BI,
+  Cell,
+  HexString,
+  Indexer,
+  Script,
+  Transaction, WitnessArgs,
+  config,
+  hd,
+  helpers as lumosHelpers
+} from '@ckb-lumos/lumos';
 import { Account } from './type';
+
+export { payFeeByFeeRate, prepareSigningEntries } from '@ckb-lumos/common-scripts/lib/common';
 
 export const CKB_TESTNET_EXPLORER = "https://pudge.explorer.nervos.org";
 export const CKB_TESTNET_RPC = "https://testnet.ckb.dev/rpc";
@@ -111,7 +122,6 @@ export async function collectInputCells(
  */
 export function addWitness(
   txSkeleton: lumosHelpers.TransactionSkeletonType,
-  // _fromScript: Script
 ): lumosHelpers.TransactionSkeletonType {
   const firstLockInputIndex = 0;
 

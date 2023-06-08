@@ -1,6 +1,6 @@
 {
   "name": "ckb-tthw",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Time to `Hello World` on CKB",
   "main": "index.js",
   "scripts": {

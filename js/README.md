@@ -51,7 +51,7 @@ This function is self-explanatory:
 1. Sign the transaction skeleton using a test private key.
 2. Send the signed transaction to CKB testnet.
 
-### Check the message on CKB explorer
+## Check the message on CKB explorer
 ![Check the message on CKB explorer](https://user-images.githubusercontent.com/1297478/236855817-af2158b4-22f9-4321-b9c6-7b00b474bda9.png)
 The cell data is the hexadecimal format of "Hello Common Knowledge Base!".
 

@@ -1,11 +1,17 @@
-import { Hash, Cell, RPC, commons, helpers as lumosHelpers, HexString, hd } from "@ckb-lumos/lumos";
-import { minimalScriptCapacity } from "@ckb-lumos/helpers"
+import { minimalScriptCapacity } from "@ckb-lumos/helpers";
+import { Cell, Hash, HexString, RPC, hd, helpers as lumosHelpers } from "@ckb-lumos/lumos";
 import {
-  CKB_TESTNET_EXPLORER, TESTNET_SCRIPTS, encodeStringToHex,
-  generateAccountFromPrivateKey, ckbIndexer, collectInputCells, calculateTxFee, addWitness
+  CKB_TESTNET_EXPLORER, TESTNET_SCRIPTS,
+  addWitness,
+  ckbIndexer, collectInputCells,
+  encodeStringToHex,
+  generateAccountFromPrivateKey,
+  payFeeByFeeRate,
+  prepareSigningEntries
 } from "./helper";
 import { CHARLIE } from "./test-keys";
 import { Account, CapacityUnit } from "./type";
+import { random } from "./util";
 
 // get a test key used for demo purposes
 const testPrivKey = CHARLIE.PRIVATE_KEY;
@@ -31,7 +37,7 @@ const constructHelloWorldTx = async (
   // FAQ: How do you set the value of capacity in a Cell?
   // See: https://docs.nervos.org/docs/essays/faq/#how-do-you-set-the-value-of-capacity-in-a-cell
   const minimalCellCapacity = minimalScriptCapacity(testAccount.lockScript) + 800000000n; // 8 CKB for Capacity field itself
-  const targetCellCapacity =  minimalCellCapacity + dataOccupiedCapacity;
+  const targetCellCapacity = minimalCellCapacity + dataOccupiedCapacity;
 
   // collect the sender's live input cells with enough CKB capacity
   const inputCells: Cell[] = await collectInputCells(
@@ -77,18 +83,14 @@ const constructHelloWorldTx = async (
   };
   txSkeleton = txSkeleton.update("outputs", (outputs) => outputs.push(...[targetCell, changeCell]));
 
-  // add witness placeholder for the skeleton, it helps in transaction fee estimation
+  // add witness placeholder for the skeleton
   txSkeleton = addWitness(txSkeleton);
 
-  const fee: bigint = calculateTxFee(txSkeleton, 1002n /** fee rate */);
-  // fee = sum(all input cells' capacity) - sum(all output cells' capacity),
-  // therefore the changeCell's capacity is reduced to cover the transaction fee
-  txSkeleton = txSkeleton.update("outputs", (outputs) => {
-    if (outputs.size < 2) throw new Error("outputs.size < 2");
-    const changeCellCapacity = collectedCapacity - targetCellCapacity - fee;
-    changeCell.cellOutput.capacity = "0x" + changeCellCapacity.toString(16)
-    return outputs.set(-1, changeCell);
-  });
+  // pay fee
+  txSkeleton = await payFeeByFeeRate(
+    txSkeleton,
+    [testAccount.address],
+    random(1000, 2000 /** max fee rate */));
 
   console.debug(`txSkeleton: ${JSON.stringify(txSkeleton, undefined, 2)}`);
   return txSkeleton;
@@ -99,7 +101,6 @@ const signAndSendTx = async (
   txSkeleton: lumosHelpers.TransactionSkeletonType,
   privateKey: HexString,
 ): Promise<Hash> => {
-  const { prepareSigningEntries } = commons.common;
   txSkeleton = prepareSigningEntries(txSkeleton);
 
   const message = txSkeleton.get('signingEntries').get(0)?.message;
