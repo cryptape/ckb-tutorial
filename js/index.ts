@@ -81,7 +81,7 @@ const constructHelloWorldTx = async (
   // push the output cells into the transaction's outputs array
   const targetCell: Cell = {
     cellOutput: {
-      capacity: "0x" + targetCellCapacity.toString(16),
+      capacity: `0x${targetCellCapacity.toString(16)}`,
       // In this demo, we only want to write a message on chain, so we define the
       // target lock script to be the test account itself.
       lock: testAccount.lockScript, // toScript
@@ -90,7 +90,7 @@ const constructHelloWorldTx = async (
   };
   const changeCell: Cell = {
     cellOutput: {
-      capacity: "0x" + (collectedCapacity - targetCellCapacity).toString(16),
+      capacity: `0x${(collectedCapacity - targetCellCapacity).toString(16)}`,
       lock: testAccount.lockScript,
     },
     data: "0x",
@@ -118,13 +118,12 @@ const signAndSendTx = async (
   txSkeleton: lumosHelpers.TransactionSkeletonType,
   privateKey: HexString,
 ): Promise<Hash> => {
-  txSkeleton = prepareSigningEntries(txSkeleton);
-
-  const message = txSkeleton.get("signingEntries").get(0)?.message;
+  const txSkel = prepareSigningEntries(txSkeleton);
+  const message = txSkel.get("signingEntries").get(0)?.message ?? "";
 
   // sign the transaction with the private key
-  const sig = hd.key.signRecoverable(message!, privateKey);
-  const signedTx = lumosHelpers.sealTransaction(txSkeleton, [sig]);
+  const sig = hd.key.signRecoverable(message, privateKey);
+  const signedTx = lumosHelpers.sealTransaction(txSkel, [sig]);
 
   // create a new RPC instance pointing to CKB testnet
   const rpc = new RPC("https://testnet.ckb.dev/rpc");
@@ -148,7 +147,7 @@ const signAndSendTx = async (
   const onChainMemo: string = "Hello Common Knowledge Base!";
 
   // Step 2: construct the transaction
-  let txSkeleton = await constructHelloWorldTx(onChainMemo);
+  const txSkeleton = await constructHelloWorldTx(onChainMemo);
 
   // Step 3: sign and send the transaction
   const txHash = await signAndSendTx(txSkeleton, testPrivKey);

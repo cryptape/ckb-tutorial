@@ -32,6 +32,7 @@ export const TESTNET_SCRIPTS = config.predefined.AGGRON4.SCRIPTS;
 // get the address of CKB testnet from the private key
 export const getAddressByPrivateKey = (privateKey: HexString): Address => {
   const args = hd.key.privateKeyToBlake160(privateKey);
+  // rome-ignore lint: SECP256K1_BLAKE160 script should exist
   const template = TESTNET_SCRIPTS["SECP256K1_BLAKE160"]!;
   const lockScript = {
     codeHash: template.CODE_HASH,
@@ -46,6 +47,7 @@ export const getAddressByPrivateKey = (privateKey: HexString): Address => {
 export const generateAccountFromPrivateKey = (privateKey: string): Account => {
   const pubKey = hd.key.privateToPublic(privateKey);
   const args = hd.key.publicKeyToBlake160(pubKey);
+  // rome-ignore lint: SECP256K1_BLAKE160 script should exist
   const template = TESTNET_SCRIPTS["SECP256K1_BLAKE160"]!;
   const lockScript = {
     codeHash: template.CODE_HASH,
@@ -110,7 +112,7 @@ export async function collectInputCells(
   });
 
   let _needCapacity = requiredCapacity;
-  let collected: Cell[] = [];
+  const collected: Cell[] = [];
   for await (const inputCell of collector.collect()) {
     collected.push(inputCell);
     _needCapacity -= BigInt(inputCell.cellOutput.capacity);
@@ -166,7 +168,7 @@ export function calculateTxFee(
 }
 
 export function encodeStringToHex(str: string): HexString {
-  return "0x" + Buffer.from(str).toString("hex");
+  return `0x${Buffer.from(str).toString("hex")}`;
 }
 
 /**

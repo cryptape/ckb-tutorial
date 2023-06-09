@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node ./index.ts",
+    "lint": "rome check . --apply",
     "test": "jest"
   },
   "repository": {
