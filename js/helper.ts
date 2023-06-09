@@ -1,4 +1,4 @@
-import { blockchain } from '@ckb-lumos/base';
+import { blockchain } from "@ckb-lumos/base";
 import { bytes } from "@ckb-lumos/codec";
 import {
   Address,
@@ -7,14 +7,18 @@ import {
   HexString,
   Indexer,
   Script,
-  Transaction, WitnessArgs,
+  Transaction,
+  WitnessArgs,
   config,
   hd,
-  helpers as lumosHelpers
-} from '@ckb-lumos/lumos';
-import { Account } from './type';
+  helpers as lumosHelpers,
+} from "@ckb-lumos/lumos";
+import { Account } from "./type";
 
-export { payFeeByFeeRate, prepareSigningEntries } from '@ckb-lumos/common-scripts/lib/common';
+export {
+  payFeeByFeeRate,
+  prepareSigningEntries,
+} from "@ckb-lumos/common-scripts/lib/common";
 
 export const CKB_TESTNET_EXPLORER = "https://pudge.explorer.nervos.org";
 export const CKB_TESTNET_RPC = "https://testnet.ckb.dev/rpc";
@@ -36,7 +40,7 @@ export const getAddressByPrivateKey = (privateKey: HexString): Address => {
   };
 
   return lumosHelpers.encodeToAddress(lockScript);
-}
+};
 
 // generate an Account from the private key
 export const generateAccountFromPrivateKey = (privateKey: string): Account => {
@@ -59,11 +63,11 @@ export const generateAccountFromPrivateKey = (privateKey: string): Account => {
 
 /**
  * Get CKB balance of an address
- * 
- * In CKB, the CKB balance is the sum of all capacity field of the Cells owned 
+ *
+ * In CKB, the CKB balance is the sum of all capacity field of the Cells owned
  * by the address
- * @param address 
- * @returns 
+ * @param address
+ * @returns
  */
 export async function getCapacities(address: string): Promise<BI> {
   const collector = ckbIndexer.collector({
@@ -92,17 +96,17 @@ export async function capacityOf(lock: Script): Promise<BI> {
 /**
  * collect input cells with empty output data
  * @param lock The lock script protects the input cells
- * @param requiredCapacity The required capacity sum of the input cells 
+ * @param requiredCapacity The required capacity sum of the input cells
  */
 export async function collectInputCells(
   lock: Script,
-  requiredCapacity: bigint
+  requiredCapacity: bigint,
 ): Promise<Cell[]> {
   const collector = ckbIndexer.collector({
     lock,
     // filter cells by output data len range, [inclusive, exclusive)
     // data length range: [0, 1), which means the data length is 0
-    outputDataLenRange: ["0x0", "0x1"]
+    outputDataLenRange: ["0x0", "0x1"],
   });
 
   let _needCapacity = requiredCapacity;
@@ -132,24 +136,25 @@ export function addWitness(
   const witness = bytes.hexify(blockchain.WitnessArgs.pack(newWitnessArgs));
 
   return txSkeleton.update("witnesses", (witnesses) =>
-    witnesses.set(firstLockInputIndex, witness)
+    witnesses.set(firstLockInputIndex, witness),
   );
 }
 
 /**
  * Calculate transaction fee
- * 
+ *
  * @param txSkeleton {@link lumosHelpers.TransactionSkeletonType}
  * @param feeRate how many shannons per KB charge
  * @returns fee, unit: shannons
- * 
+ *
  * See https://github.com/nervosnetwork/ckb/wiki/Transaction-%C2%BB-Transaction-Fee
  */
 export function calculateTxFee(
   txSkeleton: lumosHelpers.TransactionSkeletonType,
-  feeRate: bigint
+  feeRate: bigint,
 ): bigint {
-  const tx: Transaction = lumosHelpers.createTransactionFromSkeleton(txSkeleton);
+  const tx: Transaction =
+    lumosHelpers.createTransactionFromSkeleton(txSkeleton);
   const serializedTx = blockchain.Transaction.pack(tx);
   // 4 is serialized offset bytesize
   const txSize = BigInt(serializedTx.byteLength + 4);
@@ -157,7 +162,7 @@ export function calculateTxFee(
   const ratio = 1000n;
   const base = txSize * feeRate;
   const fee = base / ratio;
-  return fee * ratio < base ? fee + 1n: fee;
+  return fee * ratio < base ? fee + 1n : fee;
 }
 
 export function encodeStringToHex(str: string): HexString {
@@ -169,5 +174,7 @@ export function encodeStringToHex(str: string): HexString {
  */
 export async function getFaucet() {
   // TODO: one line code to get faucet from https://faucet.nervos.org or https://github.com/Flouse/nervos-functions#faucet
-  throw new Error("TODO: get faucet from https://faucet.nervos.org or https://github.com/Flouse/nervos-functions#faucet");
+  throw new Error(
+    "TODO: get faucet from https://faucet.nervos.org or https://github.com/Flouse/nervos-functions#faucet",
+  );
 }

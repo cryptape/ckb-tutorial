@@ -1,13 +1,22 @@
 import { minimalScriptCapacity } from "@ckb-lumos/helpers";
-import { Cell, Hash, HexString, RPC, hd, helpers as lumosHelpers } from "@ckb-lumos/lumos";
 import {
-  CKB_TESTNET_EXPLORER, TESTNET_SCRIPTS,
+  Cell,
+  Hash,
+  HexString,
+  RPC,
+  hd,
+  helpers as lumosHelpers,
+} from "@ckb-lumos/lumos";
+import {
+  CKB_TESTNET_EXPLORER,
+  TESTNET_SCRIPTS,
   addWitness,
-  ckbIndexer, collectInputCells,
+  ckbIndexer,
+  collectInputCells,
   encodeStringToHex,
   generateAccountFromPrivateKey,
   payFeeByFeeRate,
-  prepareSigningEntries
+  prepareSigningEntries,
 } from "./helper";
 import { CHARLIE } from "./test-keys";
 import { Account, CapacityUnit } from "./type";
@@ -20,13 +29,13 @@ const testPrivKey = CHARLIE.PRIVATE_KEY;
 const testAccount: Account = generateAccountFromPrivateKey(testPrivKey);
 console.assert(testAccount.address === CHARLIE.ADDRESS);
 
-/** 
+/**
  * create a new transaction that adds a cell with a given message
  * @param onChainMemo The message to be sent writted in the target cell
  * See https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0022-transaction-structure/0022-transaction-structure.md
  */
 const constructHelloWorldTx = async (
-  onChainMemo: string
+  onChainMemo: string,
 ): Promise<lumosHelpers.TransactionSkeletonType> => {
   const onChainMemoHex: HexString = encodeStringToHex(onChainMemo);
   console.log(`onChainMemoHex: ${onChainMemoHex}`);
@@ -36,22 +45,27 @@ const constructHelloWorldTx = async (
 
   // FAQ: How do you set the value of capacity in a Cell?
   // See: https://docs.nervos.org/docs/essays/faq/#how-do-you-set-the-value-of-capacity-in-a-cell
-  const minimalCellCapacity = minimalScriptCapacity(testAccount.lockScript) + 800000000n; // 8 CKB for Capacity field itself
+  const minimalCellCapacity =
+    minimalScriptCapacity(testAccount.lockScript) + 800000000n; // 8 CKB for Capacity field itself
   const targetCellCapacity = minimalCellCapacity + dataOccupiedCapacity;
 
   // collect the sender's live input cells with enough CKB capacity
   const inputCells: Cell[] = await collectInputCells(
     testAccount.lockScript,
     // requiredCapacity = targetCellCapacity + minimalCellCapacity
-    targetCellCapacity + minimalCellCapacity
+    targetCellCapacity + minimalCellCapacity,
   );
   const collectedCapacity = inputCells.reduce((acc: bigint, cell: Cell) => {
     return acc + BigInt(cell.cellOutput.capacity);
   }, 0n);
 
-  let txSkeleton = lumosHelpers.TransactionSkeleton({ cellProvider: ckbIndexer });
+  let txSkeleton = lumosHelpers.TransactionSkeleton({
+    cellProvider: ckbIndexer,
+  });
   // push the live input cells into the transaction's inputs array
-  txSkeleton = txSkeleton.update("inputs", (inputs) => inputs.push(...inputCells));
+  txSkeleton = txSkeleton.update("inputs", (inputs) =>
+    inputs.push(...inputCells),
+  );
 
   // the transaction needs cellDeps to indicate the lockScript's code (SECP256K1_BLAKE160)
   txSkeleton = txSkeleton.update("cellDeps", (cellDeps) =>
@@ -61,14 +75,14 @@ const constructHelloWorldTx = async (
         index: TESTNET_SCRIPTS.SECP256K1_BLAKE160.INDEX,
       },
       depType: TESTNET_SCRIPTS.SECP256K1_BLAKE160.DEP_TYPE,
-    })
+    }),
   );
 
   // push the output cells into the transaction's outputs array
   const targetCell: Cell = {
     cellOutput: {
       capacity: "0x" + targetCellCapacity.toString(16),
-      // In this demo, we only want to write a message on chain, so we define the 
+      // In this demo, we only want to write a message on chain, so we define the
       // target lock script to be the test account itself.
       lock: testAccount.lockScript, // toScript
     },
@@ -81,7 +95,9 @@ const constructHelloWorldTx = async (
     },
     data: "0x",
   };
-  txSkeleton = txSkeleton.update("outputs", (outputs) => outputs.push(...[targetCell, changeCell]));
+  txSkeleton = txSkeleton.update("outputs", (outputs) =>
+    outputs.push(...[targetCell, changeCell]),
+  );
 
   // add witness placeholder for the skeleton
   txSkeleton = addWitness(txSkeleton);
@@ -90,11 +106,12 @@ const constructHelloWorldTx = async (
   txSkeleton = await payFeeByFeeRate(
     txSkeleton,
     [testAccount.address],
-    random(1000, 2000 /** max fee rate */));
+    random(1000, 2000 /** max fee rate */),
+  );
 
   console.debug(`txSkeleton: ${JSON.stringify(txSkeleton, undefined, 2)}`);
   return txSkeleton;
-}
+};
 
 /** sign the prepared transaction skeleton, then send it to a CKB node. */
 const signAndSendTx = async (
@@ -103,7 +120,7 @@ const signAndSendTx = async (
 ): Promise<Hash> => {
   txSkeleton = prepareSigningEntries(txSkeleton);
 
-  const message = txSkeleton.get('signingEntries').get(0)?.message;
+  const message = txSkeleton.get("signingEntries").get(0)?.message;
 
   // sign the transaction with the private key
   const sig = hd.key.signRecoverable(message!, privateKey);
@@ -115,13 +132,17 @@ const signAndSendTx = async (
   // send the transaction to CKB node
   const txHash = await rpc.sendTransaction(signedTx);
   return txHash;
-}
+};
 
 (async () => {
-  // Let's use Charlie's account as a test account which is only for demo purposes,
-  // please DO NOT use it in production environments!
-  console.log(`Charlie's account: ${JSON.stringify(testAccount, undefined, 2)}`);
-  console.log(`Explorer: ${CKB_TESTNET_EXPLORER}/address/${testAccount.address}\n\n`);
+  // Let's use Charlie's account as a test account which is only for demo
+  // purposes, please DO NOT use it in production environments!
+  console.log(
+    `Charlie's account: ${JSON.stringify(testAccount, undefined, 2)}`,
+  );
+  console.log(
+    `Explorer: ${CKB_TESTNET_EXPLORER}/address/${testAccount.address}\n\n`,
+  );
 
   // Step 1: this is the message that will be written on chain
   const onChainMemo: string = "Hello Common Knowledge Base!";
