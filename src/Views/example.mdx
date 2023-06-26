@@ -1,0 +1,46 @@
+import { Fragment } from 'react'
+import CodeBlock from "../components/CodeBlock/CodeBlock";
+import TextLayout from "../components/TextLayout/TextLayout";
+import Flowchart from "../components/FlowChart/FlowChart";
+import Slogan from '../assets/img/slogan.png'
+import Test from '../assets/img/test.png'
+
+### Estimated Time: 5~10mins
+
+# Hello Common Knowledge Base (CKB) !
+<br/>
+<img src={Slogan} alt="slogan" />
+<br/>
+## Why this <span className="text-green-600">stack</span> ?
+<br/>
+Ready to pen a love note to the blockchain, or an everlasting secret message to your friend (or your future self)? Dreamed of sending a digital "message in a bottle" that can never get washed away? Well this tutorial will have you writing on the blockchain faster than a caffeine-fueled coder on a deadline! In this bite-sized tutorial, you'll learn how to tuck a nifty message - "Hello CKB!" - into a cell on the CKB testnet. Imagine it as sending a message in a bottle, but the ocean is digital, and the bottle is a super secure, tamper-proof CKB cell! Once your words are encrypted and inscribed into the blockchain, we'll show you how to uncover them on the CKB explorer.
+
+---
+
+<TextLayout
+    markdown={
+        '# Ready? \n Know your way around TypeScript? Great! Ever dabbled with Nervos CKB and Lumos? Even better! But if not, don	&#180;t worry, we	&#180;ll show you creating on CKB is as easy as 1-2-3!'
+    }
+    image={Test}
+    ratio={190}
+/>
+
+---
+
+<CodeBlock>
+    const hello = 'Hello, world!';
+    console.log(hello);
+</CodeBlock>
+
+---
+
+
+<Flowchart steps={["Step 1", "Step 2", "Step 3"]} />
+
+---
+
+<Fragment>
+  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    Click Me
+  </button>
+</Fragment>
