@@ -1,12 +1,13 @@
 .code-block {
     position: relative;
     background: #F5F5F5;
+    overflow: hidden;
     border: 2px solid #222222;
-    /* shadow */
-
     box-shadow: 3px 3px 1px #B2B8BC;
     border-radius: 2px;
     padding:16px 0 16px 32px;
+    margin: 16px 0;
+    text-wrap: wrap;
 
     .code-block-copy-btn {
         position: absolute;

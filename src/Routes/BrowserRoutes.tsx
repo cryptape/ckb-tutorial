@@ -1,17 +1,21 @@
 // Router.tsx
+import { FC } from 'react';
+import { MDXProvider } from '@mdx-js/react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import routes from './Route.ts';
-import BreadCrumbs from "../components/BreadCrumbs/BreadCrumbs.tsx";
+import BreadCrumbs from '../components/BreadCrumbs/BreadCrumbs';
 
-const AppRouter = () => {
+const AppRouter: FC = () => {
     return (
         <Router>
             <BreadCrumbs />
-            <Routes>
-                {routes.map((route, index) => (
+            <MDXProvider >
+                <Routes>
+                    {routes.map((route, index) => (
                         <Route key={index} path={route.path} element={<route.component />} />
-                ))}
-            </Routes>
+                    ))}
+                </Routes>
+            </MDXProvider>
         </Router>
     );
 }
