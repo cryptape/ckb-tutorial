@@ -13,9 +13,13 @@ import ResultImg from '../assets/img/result.png'
 <br/>
 <img src={Slogan} alt="slogan" />
 <br/>
-## Why this <span className="text-green-600">stack</span> ?
+Ready to pen a love note to the blockchain, or an everlasting secret message to your friend (or your future self)? Dreamed of sending a digital "message in a bottle" that can never get washed away? 
+<br/> 
+Well this tutorial will have you writing on the blockchain faster than a caffeine-fueled coder on a deadline! 
 <br/>
-Ready to pen a love note to the blockchain, or an everlasting secret message to your friend (or your future self)? Dreamed of sending a digital "message in a bottle" that can never get washed away? Well this tutorial will have you writing on the blockchain faster than a caffeine-fueled coder on a deadline! In this bite-sized tutorial, you'll learn how to tuck a nifty message - "Hello CKB!" - into a cell on the CKB testnet. Imagine it as sending a message in a bottle, but the ocean is digital, and the bottle is a super secure, tamper-proof CKB cell! Once your words are encrypted and inscribed into the blockchain, we'll show you how to uncover them on the CKB explorer.
+In this bite-sized tutorial, you'll learn how to tuck a nifty message - "Hello CKB!" - into a [cell](https://docs.nervos.org/docs/reference/cell/) on the CKB testnet. Imagine it as sending a message in a bottle, but the ocean is digital, and the bottle is a super secure, tamper-proof CKB cell! 
+<br/>
+Once your words are encrypted and inscribed into the blockchain, we'll show you how to uncover them on the [CKB explorer](https://explorer.nervos.org/).
 
 ---
 
@@ -27,20 +31,20 @@ Ready to pen a love note to the blockchain, or an everlasting secret message to 
     ratio={190}
 />
 <br/>
-## Set...
+# Set...
 First, you‘ll need to clone the repository and install a few things. Open up your terminal and type in these commands:
 
 <CodeBlock>
-    git clone https://github.com/cryptape/ckb-tutorial;
+    git clone https://github.com/cryptape/ckb-tutorial
 </CodeBlock>
 
 <CodeBlock>
-    cd ckb-tutorial/js;
+    cd ckb-tutorial/js
 </CodeBlock>
 
 Install relevant dependencies such as @ckb-lumos, etc.
 <CodeBlock>
-    npm install;
+    npm install
 </CodeBlock>
 <br/>
 # Go!
@@ -49,7 +53,7 @@ Install relevant dependencies such as @ckb-lumos, etc.
 Now, run the program using the following command in your terminal:
 
 <CodeBlock>
-    npm run start;
+    npm run start
 </CodeBlock>
 
 Ta-da! You should see a URL to the transaction on the explorer.
@@ -63,7 +67,7 @@ As an example, here's what you might see:
 <br/>
 You can verify your message on the CKB Explorer:
 <br/>
-<Flowchart steps={["Visit the output URL.", "Click on **`Cell Info`** of **`Output#0`** and go to **`Data`**.", "Copy the number string after **`0x`**.","Paste it into the **[CypherChef's magic tool](https://gchq.github.io/CyberChef/#recipe=From_Hex('None')&input=NjE2ZTZlNjk2NTZl)** to decode."]} />
+<Flowchart steps={["Visit the output **URL**.", "Click on <span className="text-green-132">**Cell Info**</span> of <span className="text-green-132">**Output#0**</span> and go to <span className="text-green-132">**Data**</span>.", "Copy the number string after <span className="text-green-132">**0x**</span>.","Paste it into the **[CypherChef's magic tool](https://gchq.github.io/CyberChef/#recipe=From_Hex('None'))** to decode."]} />
 <br/>
 
 Boom! There's your message. Curious about the behind-the-scenes magic?
@@ -89,36 +93,36 @@ That's it - three easy steps to making your mark on the blockchain.
 
 <br/>
 # Bonus Round
+Feeling adventurous?
 
 <img src={WhiteBoard} />
-Feeling adventurous?
-<br/>
+
 You can access and edit the [code file](https://github.com/Flouse/ckb-tthw/blob/42bf1b5a3566e2d8adf6ef79aad8580de0d79281/js/index.ts#L125-L136) in your terminal using:
 
 <CodeBlock>
-    vi index.ts;
+    vi index.ts
 </CodeBlock>
 
-Try changing the **`onChainMemo`** string to a different message and run it again! Go ahead, make the blockchain your own personal diary, but remember - whatever happens on the blockchain, stays on the blockchain!
+Try changing the <span className="text-green-132">onChainMemo</span> string to a different message and run it again! Go ahead, make the blockchain your own personal diary, but remember - whatever happens on the blockchain, stays on the blockchain!
 
 ---
 
 # Want to dive deeper into the code?
 
-Let's take a closer look at **two functions** that constitute the majority of [our code](https://github.com/Flouse/ckb-tthw/blob/42bf1b5a3566e2d8adf6ef79aad8580de0d79281/js/index.ts): `constructHelloWorldTx` and `signAndSendTx`.
+Let's take a closer look at **two functions** that constitute the majority of [our code](https://github.com/Flouse/ckb-tthw/blob/42bf1b5a3566e2d8adf6ef79aad8580de0d79281/js/index.ts): <span className="text-green-132">constructHelloWorldTx</span> and <span className="text-green-132">signAndSendTx</span>.
 
 <br/>
 
-## Function <span className="text-green-600">constructHelloWorldTx</span>
+## Function <span className="text-green-132">constructHelloWorldTx</span>
 
 <br/>
 
 Creates a new transaction that includes a cell with the specified on-chain message. Here's the sequence of actions it performs:
-<Flowchart steps={["Creates a transaction skeleton, a mutable data structure used to construct a CKB transaction incrementally, that acts as a blueprint for the final transaction.", "Defines the output cell, including its capacity and lock script, and adds it to the transaction skeleton.", "Modifies the transaction skeleton to cover the output cell's necessary capacity by injecting sufficient input cells.", "Pays the transaction fee with the `payFeeByFeeRate` function of Lumos."]} />
+<Flowchart steps={["Creates a transaction skeleton, a mutable data structure used to construct a CKB transaction incrementally, that acts as a blueprint for the final transaction.", "Defines the output cell, including its capacity and lock script, and adds it to the transaction skeleton.", "Modifies the transaction skeleton to cover the output cell's necessary capacity by injecting sufficient input cells.", "Pays the transaction fee with the <span className="text-green-132">payFeeByFeeRate</span> function of Lumos."]} />
 
 <br/>
 
-## Function <span className="text-green-600">signAndSendTx</span>
+## Function <span className="text-green-132">signAndSendTx</span>
 
 <br/>
 Performs two main actions:
@@ -133,11 +137,4 @@ Performs two main actions:
 Congratulations! You've just mastered the art of inscribing messages into a cell on the CKB testnet using Lumos and how to verify your transaction on the CKB explorer. Lumos offers a suite of helper functions that simplify interactions with the CKB blockchain, making it easy to create, sign, and send transactions.
 <br/>
 And that's a wrap! You're now officially a blockchain scribe.
----
 
-<CodeBlock>
-    const hello = 'Hello, world!';
-    console.log(hello);
-</CodeBlock>
-
----
