@@ -7,17 +7,21 @@ import WhiteBoard from '../assets/img/whiteboard.png'
 import Test from '../assets/img/test.png'
 import ResultImg from '../assets/img/result.png'
 
+```javascript
+const hello = "world"
+```
+
 ### Estimated Time: 5~10mins
 
 # Hello Common Knowledge Base (CKB) !
 <br/>
 <img src={Slogan} alt="slogan" />
 <br/>
-Ready to pen a love note to the blockchain, or an everlasting secret message to your friend (or your future self)? Dreamed of sending a digital "message in a bottle" that can never get washed away? 
-<br/> 
-Well this tutorial will have you writing on the blockchain faster than a caffeine-fueled coder on a deadline! 
+Ready to pen a love note to the blockchain, or an everlasting secret message to your friend (or your future self)? Dreamed of sending a digital "message in a bottle" that can never get washed away?
 <br/>
-In this bite-sized tutorial, you'll learn how to tuck a nifty message - "Hello CKB!" - into a [cell](https://docs.nervos.org/docs/reference/cell/) on the CKB testnet. Imagine it as sending a message in a bottle, but the ocean is digital, and the bottle is a super secure, tamper-proof CKB cell! 
+Well this tutorial will have you writing on the blockchain faster than a caffeine-fueled coder on a deadline!
+<br/>
+In this bite-sized tutorial, you'll learn how to tuck a nifty message - "Hello CKB!" - into a [cell](https://docs.nervos.org/docs/reference/cell/) on the CKB testnet. Imagine it as sending a message in a bottle, but the ocean is digital, and the bottle is a super secure, tamper-proof CKB cell!
 <br/>
 Once your words are encrypted and inscribed into the blockchain, we'll show you how to uncover them on the [CKB explorer](https://explorer.nervos.org/).
 
@@ -34,27 +38,29 @@ Once your words are encrypted and inscribed into the blockchain, we'll show you 
 # Set...
 First, you‘ll need to clone the repository and install a few things. Open up your terminal and type in these commands:
 
-<CodeBlock>
-    git clone https://github.com/cryptape/ckb-tutorial
-</CodeBlock>
 
-<CodeBlock>
-    cd ckb-tutorial/js
-</CodeBlock>
+```bash
+git clone https://github.com/cryptape/ckb-tutorial
+```
 
+```bash
+cd ckb-tutorial/js
+```
 Install relevant dependencies such as @ckb-lumos, etc.
-<CodeBlock>
-    npm install
-</CodeBlock>
+
+```bash
+npm install
+```
+
 <br/>
 # Go!
 <img src={WhiteBoard} />
 <br/>
 Now, run the program using the following command in your terminal:
 
-<CodeBlock>
-    npm run start
-</CodeBlock>
+```bash
+npm run start
+```
 
 Ta-da! You should see a URL to the transaction on the explorer.
 <br/>
@@ -67,27 +73,36 @@ As an example, here's what you might see:
 <br/>
 You can verify your message on the CKB Explorer:
 <br/>
-<Flowchart steps={["Visit the output **URL**.", "Click on <span className="text-green-132">**Cell Info**</span> of <span className="text-green-132">**Output#0**</span> and go to <span className="text-green-132">**Data**</span>.", "Copy the number string after <span className="text-green-132">**0x**</span>.","Paste it into the **[CypherChef's magic tool](https://gchq.github.io/CyberChef/#recipe=From_Hex('None'))** to decode."]} />
+<Flowchart steps={["Visit the output **URL**.", 'Click on <span className="text-green-600">**Cell Info**</span> of <span className="text-green-600">**Output#0**</span> and go to <span className="text-green-600">**Data**</span>.', 'Copy the number string after <span className="text-green-600">**0x**</span>.',"Paste it into the **[CypherChef's magic tool](https://gchq.github.io/CyberChef/#recipe=From_Hex('None'))** to decode."]} />
 <br/>
 
 Boom! There's your message. Curious about the behind-the-scenes magic?
+
+
 
 ---
 # Behind the Scene
 
 The [program](https://github.com/Flouse/ckb-tthw/blob/42bf1b5a3566e2d8adf6ef79aad8580de0d79281/js/index.ts#L125-L136) inscribes "Hello Common Knowledge Base!" into a cell on the CKB testnet in [3 steps](https://github.com/Flouse/ckb-tthw/blob/42bf1b5a3566e2d8adf6ef79aad8580de0d79281/js/index.ts#L125-L136):
 
-<CodeBlock>
-  // Step 1: this is the message that will be written on chain
-  const onChainMemo: string = "Hello Common Knowledge Base!";
+```javascript
+// Step 1: this is the message that will be written on chain
 
-  // Step 2: construct the transaction
-  let txSkeleton = await constructHelloWorldTx(onChainMemo);
+const onChainMemo: string = "Hello Common Knowledge Base!";
 
-  // Step 3: sign and send the transaction
-  const txHash = await signAndSendTx(txSkeleton, testPrivKey);
-  console.log(`Transaction ${txHash} sent.\n`);
-</CodeBlock>
+
+// Step 2: construct the transaction
+
+let txSkeleton = await constructHelloWorldTx(onChainMemo);
+
+
+// Step 3: sign and send the transaction
+
+const txHash = await signAndSendTx(txSkeleton, testPrivKey);
+
+console.log(`Transaction ${txHash} sent.\n`);
+
+```
 
 That's it - three easy steps to making your mark on the blockchain.
 
@@ -99,30 +114,32 @@ Feeling adventurous?
 
 You can access and edit the [code file](https://github.com/Flouse/ckb-tthw/blob/42bf1b5a3566e2d8adf6ef79aad8580de0d79281/js/index.ts#L125-L136) in your terminal using:
 
-<CodeBlock>
-    vi index.ts
-</CodeBlock>
+[//]: # (<CodeBlock>)
 
-Try changing the <span className="text-green-132">onChainMemo</span> string to a different message and run it again! Go ahead, make the blockchain your own personal diary, but remember - whatever happens on the blockchain, stays on the blockchain!
+[//]: # (    vi index.ts)
+
+[//]: # (</CodeBlock>)
+
+Try changing the <span className="text-green-600">onChainMemo</span> string to a different message and run it again! Go ahead, make the blockchain your own personal diary, but remember - whatever happens on the blockchain, stays on the blockchain!
 
 ---
 
 # Want to dive deeper into the code?
 
-Let's take a closer look at **two functions** that constitute the majority of [our code](https://github.com/Flouse/ckb-tthw/blob/42bf1b5a3566e2d8adf6ef79aad8580de0d79281/js/index.ts): <span className="text-green-132">constructHelloWorldTx</span> and <span className="text-green-132">signAndSendTx</span>.
+Let's take a closer look at **two functions** that constitute the majority of [our code](https://github.com/Flouse/ckb-tthw/blob/42bf1b5a3566e2d8adf6ef79aad8580de0d79281/js/index.ts): <span className="text-green-600">constructHelloWorldTx</span> and <span className="text-green-600">signAndSendTx</span>.
 
 <br/>
 
-## Function <span className="text-green-132">constructHelloWorldTx</span>
+## Function <span className="text-green-600">constructHelloWorldTx</span>
 
 <br/>
 
 Creates a new transaction that includes a cell with the specified on-chain message. Here's the sequence of actions it performs:
-<Flowchart steps={["Creates a transaction skeleton, a mutable data structure used to construct a CKB transaction incrementally, that acts as a blueprint for the final transaction.", "Defines the output cell, including its capacity and lock script, and adds it to the transaction skeleton.", "Modifies the transaction skeleton to cover the output cell's necessary capacity by injecting sufficient input cells.", "Pays the transaction fee with the <span className="text-green-132">payFeeByFeeRate</span> function of Lumos."]} />
+<Flowchart steps={["Creates a transaction skeleton, a mutable data structure used to construct a CKB transaction incrementally, that acts as a blueprint for the final transaction.", "Defines the output cell, including its capacity and lock script, and adds it to the transaction skeleton.", "Modifies the transaction skeleton to cover the output cell's necessary capacity by injecting sufficient input cells.", 'Pays the transaction fee with the <span className="text-green-600">payFeeByFeeRate</span> function of Lumos.']} />
 
 <br/>
 
-## Function <span className="text-green-132">signAndSendTx</span>
+## Function <span className="text-green-600">signAndSendTx</span>
 
 <br/>
 Performs two main actions:
@@ -138,3 +155,10 @@ Congratulations! You've just mastered the art of inscribing messages into a cell
 <br/>
 And that's a wrap! You're now officially a blockchain scribe.
 
+---
+
+Last modified on Jun 6, 2023
+
+<br/>
+<br/>
+<br/>

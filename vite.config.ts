@@ -1,9 +1,18 @@
 import { defineConfig } from 'vite';
-import reactRefresh from '@vitejs/plugin-react-refresh';
+import react from "@vitejs/plugin-react";
 import mdx from '@mdx-js/rollup';
 
 var vite_config = defineConfig({
-  plugins: [reactRefresh(), mdx()],
+  plugins: [react(), mdx(
+      {
+        providerImportSource: "@mdx-js/react",
+        remarkPlugins: [],
+        rehypePlugins: [],
+      }
+  )],
+  optimizeDeps: {
+    include: ["react/jsx-runtime"],
+  },
   css: {
     preprocessorOptions: {
       scss: {}

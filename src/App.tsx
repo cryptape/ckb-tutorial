@@ -1,6 +1,9 @@
 import Header from './components/Header/Header'
 import AppRouter from './Routes/BrowserRoutes';
+import Footer from "./components/Footer/Footer";
 import './App.css'
+
+
 
 function App() {
     return (
@@ -9,6 +12,7 @@ function App() {
             <div className="markdown-content-wrapper">
                 <AppRouter />
             </div>
+            <Footer />
         </>
     )
 }

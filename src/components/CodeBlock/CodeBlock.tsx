@@ -3,14 +3,15 @@ import CopyButton from "../CopyButton/CopyButton.tsx";
 import './CodeBlock.scss'
 
 interface CodeBlockProps {
-    children: React.ReactNode;
+    children: React.ReactElement;
 }
 
 const CodeBlock: React.FC<CodeBlockProps> = ({ children }) => {
-    const codeString = children as string;
+    const codeString = children.props.children || '';
+    const className = children.props.className || '';
     return (
         <div className="code-block">
-            <pre>
+            <pre className={className}>
                 <code>{codeString}</code>
             </pre>
             <CopyButton text={codeString} />
