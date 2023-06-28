@@ -4,8 +4,10 @@ import TextLayout from "../components/TextLayout/TextLayout";
 import Flowchart from "../components/FlowChart/FlowChart";
 import Slogan from '../assets/img/slogan.png'
 import WhiteBoard from '../assets/img/whiteboard.png'
+import GoImg from '../assets/img/go.png'
 import Test from '../assets/img/test.png'
-import ResultImg from '../assets/img/result.png'
+import ResultImg from '../assets/img/bash-screenshot.png'
+import ProcessImg from '../assets/img/process.png'
 import UncoveringHelloCkb from '../assets/video/uncovering_hello_ckb.mp4'
 
 ### Estimated Time: 5~10mins
@@ -51,7 +53,7 @@ npm install
 
 <br/>
 # Go!
-<img src={WhiteBoard} />
+<img src={GoImg} />
 <br/>
 Now, run the program using the following command in your terminal:
 
@@ -86,24 +88,11 @@ Boom! There's your message. Curious about the behind-the-scenes magic?
 
 The [program](https://github.com/Flouse/ckb-tthw/blob/42bf1b5a3566e2d8adf6ef79aad8580de0d79281/js/index.ts#L125-L136) inscribes "Hello Common Knowledge Base!" into a cell on the CKB testnet in [3 steps](https://github.com/Flouse/ckb-tthw/blob/42bf1b5a3566e2d8adf6ef79aad8580de0d79281/js/index.ts#L125-L136):
 
-```javascript
-// Step 1: this is the message that will be written on chain
+<br/>
 
-const onChainMemo: string = "Hello Common Knowledge Base!";
+<img src={ProcessImg} />
 
-
-// Step 2: construct the transaction
-
-let txSkeleton = await constructHelloWorldTx(onChainMemo);
-
-
-// Step 3: sign and send the transaction
-
-const txHash = await signAndSendTx(txSkeleton, testPrivKey);
-
-console.log(`Transaction ${txHash} sent.\n`);
-
-```
+<br/>
 
 That's it - three easy steps to making your mark on the blockchain.
 
@@ -115,11 +104,9 @@ Feeling adventurous?
 
 You can access and edit the [code file](https://github.com/Flouse/ckb-tthw/blob/42bf1b5a3566e2d8adf6ef79aad8580de0d79281/js/index.ts#L125-L136) in your terminal using:
 
-[//]: # (<CodeBlock>)
-
-[//]: # (    vi index.ts)
-
-[//]: # (</CodeBlock>)
+```bash
+vi index.ts
+```
 
 Try changing the <span className="text-green-600">onChainMemo</span> string to a different message and run it again! Go ahead, make the blockchain your own personal diary, but remember - whatever happens on the blockchain, stays on the blockchain!
 
