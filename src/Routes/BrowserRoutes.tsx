@@ -1,4 +1,3 @@
-// Router.tsx
 import { FC } from 'react';
 import { MDXProvider } from '@mdx-js/react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -13,10 +12,10 @@ const components = {
 };
 
 const AppRouter: FC = () => {
-    // @ts-ignore
     return (
         <Router>
             <BreadCrumbs />
+            {/* @ts-ignore */}
             <MDXProvider components={components}>
                 <Routes>
                     {routes.map((route, index) => (
