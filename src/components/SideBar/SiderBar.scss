@@ -19,12 +19,12 @@
     box-shadow: 3px 3px 1px 0px #B2B8BC;
 
     .first-level-item {
-      min-height: 40px;
       line-height: 40px;
       padding: 0 16px;
 
       .first-level-container {
         width: 100%;
+        padding: 9px 0;
         p {
           font-family: "Comic Sans MS";
         }

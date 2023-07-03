@@ -18,7 +18,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ name, firstLevel, secondLevel
     const isActive = location.pathname.includes(firstLevel) && location.pathname.includes(secondLevel);
 
     return (
-        <li className="flex flex-col mb-2">
+        <li className="flex flex-col">
             <button onClick={onToggle} className={`${isActive ? 'sidebar-active-text' : ''}`}>
                 {name}
             </button>
