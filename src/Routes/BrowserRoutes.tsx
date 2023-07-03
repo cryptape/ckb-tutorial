@@ -5,6 +5,7 @@ import routes from './Route.ts';
 import BreadCrumbs from '../components/BreadCrumbs/BreadCrumbs';
 import H1 from "../components/H4/H1.tsx";
 import CodeBlock from "../components/CodeBlock/CodeBlock";
+import Sidebar from "../components/SideBar/SideBar";
 
 const components = {
     h1: H1 as React.FC<JSX.IntrinsicElements['h1']>,
@@ -15,6 +16,7 @@ const AppRouter: FC = () => {
     return (
         <Router>
             <BreadCrumbs />
+            <Sidebar />
             {/* @ts-ignore */}
             <MDXProvider components={components}>
                 <Routes>

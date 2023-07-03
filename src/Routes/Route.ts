@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import Example from '../Views/example.mdx';
+import HelloWorld from '../Views/HelloWorld.mdx';
 
 interface RouteItem {
     path: string;
@@ -7,8 +7,8 @@ interface RouteItem {
 }
 
 const routes: RouteItem[] = [
-    { path: '/', component: Example },
-    { path: '/example1', component: Example },
+    { path: '/', component: HelloWorld },
+    { path: '/Onboarding/HelloWorld', component: HelloWorld },
 ];
 
 export default routes;

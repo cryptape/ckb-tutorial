@@ -1,0 +1,22 @@
+.next-page-container {
+  p {
+    color: #9D9D9D;
+    font-size: 16px;
+    font-family: 'Comic Sans MS Light';
+  }
+  .next-page-btn {
+    width: 374px;
+    height: 72px;
+    background-image: url(../../assets/img/Next.png);
+    background-size: cover;
+    background-position: center center;
+    color: #222;
+    text-align: center;
+    line-height: 72px;
+    font-size: 22px;
+    font-family: 'Comic Sans MS';
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

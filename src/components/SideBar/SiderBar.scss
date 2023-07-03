@@ -1,0 +1,55 @@
+.side-bar-wrapper {
+  position: fixed;
+  top: 182px;
+  left: 0;
+
+  .collapsed-menu {
+    width: 56px;
+    height: 40px;
+  }
+
+  .side-bar-container {
+    display: none;
+    width: 274px;
+    border-radius: 0px 8px 8px 0px;
+    border: 2px solid #222;
+    background: #FFF;
+
+    /* shadow */
+    box-shadow: 3px 3px 1px 0px #B2B8BC;
+
+    .first-level-item {
+      min-height: 40px;
+      line-height: 40px;
+      padding: 0 16px;
+
+      .first-level-container {
+        width: 100%;
+        p {
+          font-family: "Comic Sans MS";
+        }
+        img {
+          width: 14px;
+          height: 18px;
+        }
+      }
+
+      button {
+        padding-left: 8px;
+        text-align: left;
+        font-family: "Roboto Mono";
+        font-weight: 100;
+      }
+    }
+  }
+
+  &:hover {
+    .collapsed-menu {
+      display: none;
+    }
+
+    .side-bar-container {
+      display: block;
+    }
+  }
+}

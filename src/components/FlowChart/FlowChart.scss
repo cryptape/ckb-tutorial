@@ -1,21 +1,16 @@
 .flowchart-step {
     width: 792px;
     margin: 13px 0;
-    padding: 16px ;
     background: #FFFFFF;
-    border: 2px solid #222222;
-    /* shadow */
-    box-shadow: 3px 3px 1px #B2B8BC;
-    border-radius: 2px;
 }
 
 .step-index {
     width: 40px;
     height: 40px;
-    margin-bottom: 10px;
+    margin-right: 16px;
     line-height: 36px;
-    border: 2px solid #222222;
-    border-radius: 50%;
+    border-radius: 2px;
+    border: 1px solid var(--text-02, #2A2E2E);
     text-align: center;
     font-family: 'Comic Sans MS';
 }

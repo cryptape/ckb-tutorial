@@ -30,7 +30,8 @@ green     #859900
 
 code[class*="language-"],
 pre[class*="language-"] {
-    color: #657b83; /* base00 */
+    --tw-text-opacity: 1;
+    color: #2A2E2E;
     font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
     font-size: 1em;
     text-align: left;
@@ -38,9 +39,7 @@ pre[class*="language-"] {
     word-spacing: normal;
     word-break: normal;
     word-wrap: normal;
-
     line-height: 1.5;
-
     -moz-tab-size: 4;
     -o-tab-size: 4;
     tab-size: 4;
@@ -63,7 +62,6 @@ code[class*="language-"]::selection, code[class*="language-"] ::selection {
 /* Code blocks */
 pre[class*="language-"] {
     padding: 1em;
-    margin: .5em 0;
     overflow: auto;
     border-radius: 0.3em;
 }
@@ -126,7 +124,7 @@ pre[class*="language-"] {
 
 .token.function,
 .token.class-name {
-    color: #b58900; /* yellow */
+    color: #18837D; /* yellow */
 }
 
 .token.regex,
@@ -146,3 +144,4 @@ pre[class*="language-"] {
 .token.entity {
     cursor: help;
 }
+
