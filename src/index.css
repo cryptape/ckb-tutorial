@@ -13,20 +13,21 @@
   src: url("./assets/font/ComicSansLight.woff") format('woff');
 }
 
+/*@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@1,800&family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap');*/
+
 @font-face {
   font-family: 'Roboto Mono';
-  src: url("./assets/font/RobotoMono.woff") format('woff');
+  src: url("./assets/font/RobotoMono-Regular.woff") format('woff');
+  font-weight: normal;
 }
 
 @font-face {
-  font-family: 'Roboto Mono Thin';
-  src: url("./assets/font/RobotoMono-Thin.woff") format('woff');
+  font-family: 'Roboto Mono Bolder';
+  src: url("./assets/font/RobotoMono-Bold.woff") format('woff');
 }
 
-@font-face {
-  font-family: 'Roboto Mono Extra Light';
-  src: url("./assets/font/RobotoMono-ExtraLight.woff") format('woff');
-}
+
+
 
 #root {
   margin: 0 auto;
@@ -65,7 +66,7 @@ h2 {
 
 h3 {
   font-size: 16px;
-  font-family: Roboto Mono;
+  font-family: 'Roboto Mono', monospace;
   font-weight: 700;
   margin-bottom: 32px;
 }
@@ -73,7 +74,11 @@ h3 {
 p,
 pre,
 code {
-  font-family: 'Roboto Mono';
+  font-family: 'Roboto Mono', monospace;
+}
+
+strong {
+  font-family: 'Roboto Mono Bolder', monospace;
 }
 
 p {

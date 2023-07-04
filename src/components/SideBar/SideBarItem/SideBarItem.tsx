@@ -1,5 +1,4 @@
-// SideBarItem.tsx
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './SideBarItem.scss'
 
@@ -15,7 +14,12 @@ type SidebarItemProps = {
 
 const SidebarItem: React.FC<SidebarItemProps> = ({ name, firstLevel, secondLevel, secondLevelText, isOpen, onToggle }) => {
     const location = useLocation();
-    const isActive = location.pathname.includes(firstLevel) && location.pathname.includes(secondLevel);
+    const [isActive, setIsActive] = useState(false);
+
+    useEffect(() => {
+        const isActivePath = location.pathname.includes(firstLevel) && location.pathname.includes(secondLevel);
+        setIsActive(isActivePath);
+    }, [location.pathname, firstLevel, secondLevel]);
 
     return (
         <li className="flex flex-col">
