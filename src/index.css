@@ -77,7 +77,7 @@ h3 {
 p,
 pre,
 code {
-  font-family: 'Roboto Mono', monospace;
+  font-family: 'Roboto Mono', monospace !important;
 }
 
 strong {
