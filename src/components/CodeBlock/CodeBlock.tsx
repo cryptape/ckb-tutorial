@@ -9,11 +9,14 @@ import 'prismjs/components/prism-bash';
 interface CodeBlockProps {
     children: React.ReactElement;
 }
-
-(Prism.languages.bash as any)['cd'] = {
-    pattern: /\b(cd|he|git)\b/,
-    alias: 'keyword'
-};
+Prism.languages.bash = Prism.languages.extend('bash', {
+    'keyword': Prism.languages.insertBefore('bash', 'keyword', {
+        'new-keyword': {
+            pattern: /\b(clone|run|start)\b/,
+            alias: ['clone', 'run', 'start']
+        }
+    }).keyword
+});
 
 const CodeBlock: React.FC<CodeBlockProps> = ({ children }) => {
     const codeString = children.props.children || '';

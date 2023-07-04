@@ -7,13 +7,16 @@
   src: url("./assets/font/ComicSansMS3.woff") format('woff');
 }
 
+@font-face {
+  font-family: 'Comic Sans Bold';
+  src: url("./assets/font/ComicSansMSBold.woff") format('woff');
+}
 
 @font-face {
   font-family: 'Comic Sans MS Light';
   src: url("./assets/font/ComicSansLight.woff") format('woff');
 }
 
-/*@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@1,800&family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap');*/
 
 @font-face {
   font-family: 'Roboto Mono';
@@ -52,21 +55,21 @@ body {
 }
 
 h1 {
-  font-family: "Comic Sans MS";
+  font-family: 'Comic Sans Bold', monospace;
   font-size: 32px;
   line-height: 45px;
   margin-bottom: 32px;
 }
 
 h2 {
-  font-family: "Comic Sans MS Light";
+  font-family: 'Comic Sans Bold', monospace;
   font-size: 24px;
   line-height: 34px;
 }
 
 h3 {
   font-size: 16px;
-  font-family: 'Roboto Mono', monospace;
+  font-family: 'Roboto Mono Bolder', monospace;
   font-weight: 700;
   margin-bottom: 32px;
 }
