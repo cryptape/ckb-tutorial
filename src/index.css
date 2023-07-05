@@ -48,6 +48,15 @@
   src: url("./assets/font/Montserrat-Bold.woff") format('woff');
 }
 
+@font-face {
+  font-family: 'SF-Pro-Text';
+  src: url("./assets/font/SF-Pro-Text-Regular.woff") format('woff');
+}
+@font-face {
+  font-family: 'SF-Pro-Text Bolder';
+  src: url("./assets/font/SF-Pro-Text-Bold.woff") format('woff');
+}
+
 
 
 
@@ -93,14 +102,18 @@ h3 {
   margin-bottom: 32px;
 }
 
+h4 {
+  color: #7B8684;
+}
+
 p {
-  font-family: 'sans-serif';
+  font-family: 'SF-Pro-Text','sans-serif';
   font-weight: 300;
 }
 
 pre,
 code {
-  font-family: 'DM Mono', monospace !important;
+  font-family: 'SF-Pro-Text','sans-serif';
 }
 
 strong {
@@ -114,7 +127,7 @@ p {
 }
 
 hr {
-  margin: 97px auto;
+  margin: 0 auto;
   height: 1px;
   border-color: #222222;
 }

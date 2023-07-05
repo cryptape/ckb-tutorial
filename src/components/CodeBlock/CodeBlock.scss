@@ -1,20 +1,14 @@
 .code-block {
     position: relative;
     background: #F5F5F5;
-    overflow: hidden;
     border-radius: 2px;
     border: 1px solid var(--text-03, #93A3A1);
     background: var(--background-code, #FAFAFA);
     margin: 16px 0;
 
     .code-block-copy-btn {
-        position: absolute;
-        right: 16px;
-        top: 50%;
-        transform: translateY(-50%);
-        &:hover {
-            cursor: pointer;
-        }
+        // position: absolute;
+
     }
     .new-keyword {
         color: #18837D;
