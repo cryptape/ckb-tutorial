@@ -30,6 +30,16 @@
 }
 
 
+@font-face {
+  font-family: 'DM Mono';
+  src: url("./assets/font/DMMono-Regular.woff") format('woff');
+}
+@font-face {
+  font-family: 'DM Mono Bolder';
+  src: url("./assets/font/DMMono-Medium.woff") format('woff');
+}
+
+
 
 
 #root {
@@ -77,11 +87,11 @@ h3 {
 p,
 pre,
 code {
-  font-family: 'Roboto Mono', monospace !important;
+  font-family: 'DM Mono', monospace !important;
 }
 
 strong {
-  font-family: 'Roboto Mono Bolder', monospace;
+  font-family: 'DM Mono Bolder', monospace;
 }
 
 p {
