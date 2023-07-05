@@ -39,6 +39,15 @@
   src: url("./assets/font/DMMono-Medium.woff") format('woff');
 }
 
+@font-face {
+  font-family: 'Montserrat';
+  src: url("./assets/font/Montserrat-Medium.woff") format('woff');
+}
+@font-face {
+  font-family: 'Montserrat Bolder';
+  src: url("./assets/font/Montserrat-Bold.woff") format('woff');
+}
+
 
 
 
@@ -87,16 +96,17 @@ h3 {
 p,
 pre,
 code {
-  font-family: 'DM Mono', monospace !important;
+  font-family: 'Montserrat', monospace !important;
 }
 
 strong {
-  font-family: 'DM Mono Bolder', monospace;
+  font-family: 'Montserrat Bolder', monospace;
 }
 
 p {
   max-width: 792px;
-  line-height: 162.5%;
+  font-size: 18px;
+  line-height: 163%;
 }
 
 hr {
