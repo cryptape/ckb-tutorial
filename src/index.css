@@ -93,10 +93,13 @@ h3 {
   margin-bottom: 32px;
 }
 
-p,
+p {
+  font-family: 'Montserrat', monospace !important;
+}
+
 pre,
 code {
-  font-family: 'Montserrat', monospace !important;
+  font-family: 'DM Mono', monospace !important;
 }
 
 strong {
