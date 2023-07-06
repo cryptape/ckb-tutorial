@@ -33,13 +33,14 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children }) => {
     }, []);
 
     const containsUrl = urlPattern.test(codeString);
+    const isJavaScript = className.includes("language-javascript");
 
     return (
         <div className="code-block">
             <pre className={className}>
                 <code>{codeString}</code>
             </pre>
-            {!containsUrl && <CopyButton text={codeString} />}
+            {!containsUrl && !isJavaScript && <CopyButton text={codeString} />}
         </div>
     );
 };

@@ -13,4 +13,12 @@
     .new-keyword {
         color: #18837D;
     }
+
+    .language-javascript {
+        .keyword,
+        .property,
+        .constant {
+            color: #222 !important;
+        }
+    }
 }

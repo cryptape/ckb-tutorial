@@ -138,7 +138,21 @@ The [program](https://github.com/cryptape/ckb-tutorial/blob/main/js/index.ts) in
 
 <MarginContainer bottom={16} />
 
-<img src={ProcessImg} />
+[//]: # (<img src={ProcessImg} />)
+```javascript
+// Step 1: this is the message that will be written on chain
+const onChainMemo: string = "Hello common Knowledge Base!";
+
+// Step 2: construct the transaction
+let txSkeleton = await constructHelloWorldTx(onChainMemo);
+
+// Step 3: sign and send the transaction
+const txHash = await signAndSendTx(txSkeleton, testPrivKey);
+console.log(`Transaction ${txHash} sent.\n`)
+
+// Done, let’s see the transaction in CKB Testnet Explorer
+console.log(`See ${CKB_TESTNET_EXPLORER}/transaction/${txHash}`);
+```
 
 <MarginContainer bottom={16} />
 
