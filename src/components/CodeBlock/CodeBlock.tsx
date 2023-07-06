@@ -5,17 +5,23 @@ import './CodeBlock.scss'
 import '../../assets/style/prism-solarizedlight.css';
 import 'prismjs/components/prism-bash';
 
-
 interface CodeBlockProps {
     children: React.ReactElement;
 }
+
+const urlPattern = /\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i;
+
 Prism.languages.bash = Prism.languages.extend('bash', {
     'keyword': Prism.languages.insertBefore('bash', 'keyword', {
         'new-keyword': {
             pattern: /\b(clone|run|start)\b/,
             alias: ['clone', 'run', 'start']
         }
-    }).keyword
+    }).keyword,
+    'url': {
+        pattern: urlPattern,
+        greedy: true
+    }
 });
 
 const CodeBlock: React.FC<CodeBlockProps> = ({ children }) => {
@@ -26,12 +32,14 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children }) => {
         Prism.highlightAll();
     }, []);
 
+    const containsUrl = urlPattern.test(codeString);
+
     return (
         <div className="code-block">
             <pre className={className}>
                 <code>{codeString}</code>
             </pre>
-            <CopyButton text={codeString} />
+            {!containsUrl && <CopyButton text={codeString} />}
         </div>
     );
 };

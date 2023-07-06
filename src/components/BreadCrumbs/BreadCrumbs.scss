@@ -1,5 +1,5 @@
 .breadcrumb-wrapper {
-  height: 90px;
+  padding: 24px 0;
   .home-btn {
     width: 16px;
     height: 16px;
@@ -15,5 +15,11 @@
   .child-catg {
     font-size: 14px;
     font-family: 'Comic Sans MS';
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .breadcrumb-wrapper {
+    display: none !important;
   }
 }

@@ -2,7 +2,6 @@ import React from 'react';
 // import { useLocation } from 'react-router-dom';
 import HomeBtn from '../../assets/img/Home.png';
 import ArrowRight from '../../assets/img/arrow-right.png';
-
 import './BreadCrumbs.scss'
 
 const BreadCrumbs: React.FC = () => {

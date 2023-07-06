@@ -8,6 +8,10 @@
         width: 157px;
     }
 
+    .header-text {
+        display: none;
+    }
+
     .search-bar {
         width: 260px;
         height: 44px;
@@ -24,6 +28,31 @@
 
         p {
             font-family: "Comic Sans MS";
+        }
+    }
+    .mobile-search {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .header-wrapper {
+        height: 12.66rem;
+        padding: 0 2.66rem;
+        .header-logo {
+            display: none;
+        }
+        .header-text {
+            display: block;
+            line-height: 12.66rem;
+            font-size: 4rem;
+            font-family: "Comic Sans Bold", monospace;
+        }
+        .search-bar {
+            display: none;
+        }
+        .mobile-search {
+            display: block;
         }
     }
 }

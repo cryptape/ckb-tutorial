@@ -113,11 +113,17 @@ p {
 
 pre,
 code {
-  font-family: 'SF-Pro-Text','sans-serif';
+  display: block;
+  width: 100%;
+  padding: 0.5rem 1rem !important;
+  white-space: break-spaces !important;
+  word-break: break-word !important;
+  font-family: 'Roboto Mono','sans-serif' !important;
 }
 
+
 strong {
-  font-family: 'Montserrat Bolder', monospace;
+  font-family: 'SF-Pro-Text Bolder','sans-serif';
 }
 
 p {
