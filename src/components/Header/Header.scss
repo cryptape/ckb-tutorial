@@ -27,7 +27,8 @@
         }
 
         p {
-            font-family: "Comic Sans MS";
+            font-family: "Comic Sans MS", monospace;
+            color: var(--text-03, #7B8684)  ;
         }
     }
     .mobile-search {
