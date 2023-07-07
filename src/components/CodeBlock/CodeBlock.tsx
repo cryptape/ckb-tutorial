@@ -36,6 +36,11 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children }) => {
     const isJavaScript = className.includes("language-javascript");
     const containsGit = codeString.includes('git');
 
+    // If the codeString contains both a URL and 'git', add 'github' to the className
+    if (containsUrl && containsGit) {
+        className += " github";
+    }
+
     return (
         <div className="code-block">
             <pre className={className}>
@@ -45,6 +50,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children }) => {
         </div>
     );
 };
+
 
 
 export default CodeBlock;
