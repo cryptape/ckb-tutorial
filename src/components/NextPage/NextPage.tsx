@@ -27,12 +27,7 @@ const NextPage: React.FC<NextPageProps> = ({ docName }) => {
         <div className="next-page-wrapper flex flex-row-reverse">
             {route && (
                 <div className="next-page-container">
-                    <p className="pc-text">Next</p>
-                    <div className="next-page-btn" onClick={handleClick}>
-                        {docName}
-                    </div>
-
-                    <div className="mobile-next-container flex items-center">
+                    <div className="mobile-next-container flex items-center" onClick={handleClick}>
                         <img className="mobile-next-icon" src={NextPageButton} alt="next" />
                         <div className="mobile-next-text-container">
                             <div className="action-text">Next</div>

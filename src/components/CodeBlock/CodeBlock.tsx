@@ -34,15 +34,17 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children }) => {
 
     const containsUrl = urlPattern.test(codeString);
     const isJavaScript = className.includes("language-javascript");
+    const containsGit = codeString.includes('git');
 
     return (
         <div className="code-block">
             <pre className={className}>
                 <code>{codeString}</code>
             </pre>
-            {!containsUrl && !isJavaScript && <CopyButton text={codeString} />}
+            {(!containsUrl || containsGit) && !isJavaScript && <CopyButton text={codeString} />}
         </div>
     );
 };
+
 
 export default CodeBlock;

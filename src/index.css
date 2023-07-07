@@ -75,12 +75,14 @@ h1 {
   font-size: 32px;
   line-height: 45px;
   margin-bottom: 32px;
+  color: #222222;
 }
 
 h2 {
   font-family: 'Comic Sans Bold', monospace;
   font-size: 24px;
   line-height: 34px;
+  color: #222222;
 }
 
 h3 {
@@ -88,6 +90,7 @@ h3 {
   font-family: 'Montserrat Bolder', monospace;
   font-weight: 700;
   margin-bottom: 32px;
+  color: #222222;
 }
 
 h4 {
@@ -97,6 +100,7 @@ h4 {
 p {
   font-family: 'SF-Pro-Text','sans-serif';
   font-weight: 300;
+  color: #2A2E2E;
 }
 
 pre,
@@ -108,6 +112,7 @@ code {
   white-space: break-spaces !important;
   word-break: break-word !important;
   font-family: 'Roboto Mono','sans-serif' !important;
+  color: #2A2E2E !important;
 }
 
 

@@ -1,37 +1,4 @@
 .next-page-container {
-  .pc-text {
-    color: #9D9D9D;
-    font-size: 16px;
-    font-family: 'Comic Sans MS Light', monospace;
-  }
-  .next-page-btn {
-    width: 374px;
-    height: 72px;
-    background-image: url(../../assets/img/Next.png);
-    background-size: cover;
-    background-position: center center;
-    color: #222;
-    text-align: center;
-    line-height: 72px;
-    font-size: 22px;
-    font-family: 'Comic Sans MS', monospace;
-    &:hover {
-      cursor: pointer;
-    }
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  .next-page-wrapper {
-    flex-direction: row !important;
-    .pc-text {
-      display: none;
-    }
-    .next-page-btn {
-      display: none;
-    }
-  }
-
   .mobile-next-container {
     .mobile-next-icon {
       width: 3.75rem;
@@ -49,6 +16,18 @@
         font-family: Comic Sans MS, monospace;
         color: #2A2E2E;
       }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .next-page-wrapper {
+    flex-direction: row !important;
+    .pc-text {
+      display: none;
+    }
+    .next-page-btn {
+      display: none;
     }
   }
 }
