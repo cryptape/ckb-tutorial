@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import docs, { Doc } from '../../utils/docs.ts';
+import NextPageButton from '../../assets/img/next-page.png'
 import './NextPage.scss';
 
 interface NextPageProps {
@@ -23,12 +24,20 @@ const NextPage: React.FC<NextPageProps> = ({ docName }) => {
     };
 
     return (
-        <div className="flex flex-row-reverse">
+        <div className="next-page-wrapper flex flex-row-reverse">
             {route && (
                 <div className="next-page-container">
-                    <p>Next</p>
+                    <p className="pc-text">Next</p>
                     <div className="next-page-btn" onClick={handleClick}>
                         {docName}
+                    </div>
+
+                    <div className="mobile-next-container flex items-center">
+                        <img className="mobile-next-icon" src={NextPageButton} alt="next" />
+                        <div className="mobile-next-text-container">
+                            <div className="action-text">Next</div>
+                            <div className="title-text">Multi-purpose NFT</div>
+                        </div>
                     </div>
                 </div>
             )}

@@ -9,7 +9,7 @@
     padding-top: 58px;
     .ckb-info {
       color: #ffffff;
-      font-family: "Comic Sans MS";
+      font-family: "Comic Sans MS", monospace;
       .discord {
         img {
           width: 25px;
@@ -30,6 +30,14 @@
           width: 28px;
         }
       }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px)  {
+  .footer-wrapper{
+    .footer-content {
+      padding: 3.62rem 1.25rem;
     }
   }
 }

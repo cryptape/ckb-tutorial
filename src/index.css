@@ -29,25 +29,6 @@
   src: url("./assets/font/RobotoMono-Bold.woff") format('woff');
 }
 
-
-@font-face {
-  font-family: 'DM Mono';
-  src: url("./assets/font/DMMono-Regular.woff") format('woff');
-}
-@font-face {
-  font-family: 'DM Mono Bolder';
-  src: url("./assets/font/DMMono-Medium.woff") format('woff');
-}
-
-@font-face {
-  font-family: 'Montserrat';
-  src: url("./assets/font/Montserrat-Medium.woff") format('woff');
-}
-@font-face {
-  font-family: 'Montserrat Bolder';
-  src: url("./assets/font/Montserrat-Bold.woff") format('woff');
-}
-
 @font-face {
   font-family: 'SF-Pro-Text';
   src: url("./assets/font/SF-Pro-Text-Regular.woff") format('woff');
@@ -57,7 +38,14 @@
   src: url("./assets/font/SF-Pro-Text-Bold.woff") format('woff');
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
 
+html {
+  font-size: 16px;
+}
 
 
 #root {
@@ -116,6 +104,7 @@ code {
   display: block;
   width: 100%;
   padding: 0.5rem 1rem !important;
+  font-size: 14px !important;
   white-space: break-spaces !important;
   word-break: break-word !important;
   font-family: 'Roboto Mono','sans-serif' !important;
@@ -143,4 +132,21 @@ a,
   color: #18837D;
 }
 
+@media only screen and (max-width: 768px) {
+  .markdown-content-wrapper {
+    padding: 0 1.25rem;
+  }
 
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  hr {
+    opacity: 0;
+    margin-top: -6rem;
+  }
+}

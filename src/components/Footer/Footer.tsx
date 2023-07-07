@@ -1,9 +1,9 @@
 import React from 'react';
-import './Footer.scss';
 import Discord from '../../assets/img/discord.png'
 import Github from '../../assets/img/github.png'
 import Unknown from '../../assets/img/unknown.png'
 import Twitter from '../../assets/img/twitter.png'
+import './Footer.scss';
 
 const Footer: React.FC = () => {
     return (
@@ -30,5 +30,6 @@ const Footer: React.FC = () => {
         </footer>
     );
 }
+
 
 export default Footer;

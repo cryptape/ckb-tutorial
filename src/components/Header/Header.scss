@@ -37,15 +37,15 @@
 
 @media only screen and (max-width: 768px) {
     .header-wrapper {
-        height: 12.66rem;
-        padding: 0 2.66rem;
+        height: 5rem;
+        padding: 0 1rem;
         .header-logo {
             display: none;
         }
         .header-text {
             display: block;
-            line-height: 12.66rem;
-            font-size: 4rem;
+            line-height: 5rem;
+            font-size: 1.5rem;
             font-family: "Comic Sans Bold", monospace;
         }
         .search-bar {
@@ -53,6 +53,8 @@
         }
         .mobile-search {
             display: block;
+            width: 1.25rem;
+            height: 1.25rem;
         }
     }
 }

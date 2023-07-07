@@ -9,10 +9,15 @@ import './SiderBar.scss'
 
 const Sidebar: React.FC = () => {
     const [openFirstLevel, setOpenFirstLevel] = useState<string | null>(null);
-
+    const [secondLevelText, setSecondLevelText] = useState<string | null>(null);
+    const [openStatus, setOpenStatus] = useState<boolean>(false)
     const handleToggle = (firstLevel: string) => {
         setOpenFirstLevel(openFirstLevel === firstLevel ? null : firstLevel);
     };
+
+    const mobileToggle = () => {
+        setOpenStatus(openStatus => !openStatus)
+    }
 
     const location = useLocation();
 
@@ -23,13 +28,29 @@ const Sidebar: React.FC = () => {
         );
         if (matchingFirstLevel) {
             setOpenFirstLevel(matchingFirstLevel.firstLevel);
+            const secondLevelMatch = matchingFirstLevel.secondLevels.find(level =>
+                currentPath.includes(level.secondLevel)
+            );
+            if (secondLevelMatch) {
+                setSecondLevelText(secondLevelMatch.secondLevelText);
+            }
         }
     }, [location]);
+
+    const isMobile = window.innerWidth <= 768;
+    const sideBarStyle = isMobile ? { display: openStatus ? 'block' : 'none' } : {};
 
     return (
         <div className="side-bar-wrapper">
             <img className="collapsed-menu" src={SidebarIcon} alt="Sidebar Icon" />
-            <div className="side-bar-container">
+            <div className="collapsed-button flex items-center" onClick={mobileToggle}>
+                {secondLevelText}
+                <img
+                    src={openStatus ? UpArrow : DownArrow}
+                    alt="Toggle"
+                />
+            </div>
+            <div className="side-bar-container" style={sideBarStyle}>
                 {docs.map(({ firstLevel, firstLevelText, secondLevels }: Doc) => (
                     <div className="first-level-item" key={firstLevel}>
                         <div className="font-bold cursor-pointer" onClick={() => handleToggle(firstLevel)}>

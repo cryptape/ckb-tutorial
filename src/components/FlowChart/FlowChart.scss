@@ -12,10 +12,19 @@
     border-radius: 2px;
     border: 1px solid var(--text-02, #2A2E2E);
     text-align: center;
-    font-family: 'Comic Sans MS';
+    font-family: 'Comic Sans MS', monospace;
+    flex-shrink: 0; // Add this line
 }
 
 .flowchart-arrow {
     display: inline-block;
     margin-left: 16px;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .flowchart-step {
+        width: 100%;
+        align-items: flex-start !important;
+    }
 }

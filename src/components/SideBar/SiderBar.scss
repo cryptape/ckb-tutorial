@@ -53,3 +53,33 @@
     }
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .side-bar-wrapper {
+    position: relative;
+    top: 0;
+    margin-bottom: 4rem;
+    .collapsed-menu {
+      display: none;
+    }
+    .collapsed-button {
+      font-size: 1rem;
+      font-family: Comic Sans Bold, monospace;
+      padding: 1rem 1rem 1rem 0;
+      img {
+        width: 16px;
+        height: 20px;
+        margin-left: 0.75rem;
+      }
+    }
+    .side-bar-container {
+      display: none;
+    }
+  }
+}
+
+@media only screen and (min-width: 768px)  {
+  .collapsed-button {
+    display: none;
+  }
+}
