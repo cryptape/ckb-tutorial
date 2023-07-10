@@ -5,6 +5,9 @@
   transform: translateY(-50%);
   &:hover {
     cursor: pointer;
+    .popover-hover {
+      display: block;
+    }
   }
   .popover {
     position: absolute;
@@ -15,17 +18,18 @@
     color: white;
     padding: 10px;
     border-radius: 4px;
-    .popover-arrow {
-      position: absolute;
-      bottom: -8px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 0;
-      border-left: 10px solid transparent;
-      border-right: 10px solid transparent;
-      border-top: 10px solid black;
-    }
+    white-space: pre;
+  }
+  .popover-arrow {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid black;
   }
   .code-block-copy-btn {
     cursor: pointer;

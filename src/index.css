@@ -59,6 +59,10 @@ a {
   text-decoration: inherit;
 }
 
+a:hover {
+  text-decoration: underline;
+}
+
 body {
   margin: 0;
   display: flex;
