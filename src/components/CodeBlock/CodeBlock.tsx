@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import CopyButton from "../CopyButton/CopyButton.tsx";
 import Prism from 'prismjs'
 import './CodeBlock.scss'
@@ -25,12 +25,19 @@ Prism.languages.bash = Prism.languages.extend('bash', {
 });
 
 const CodeBlock: React.FC<CodeBlockProps> = ({ children }) => {
-    const codeString = children.props.children || '';
+    let codeString = children.props.children || '';
     let className = children.props.className || '';
+    const [fileName, setFileName] = useState("")
 
     useEffect(() => {
+        let lines = codeString.split('\n');
+        if (lines[0].startsWith('file:')) {
+            setFileName(lines[0].split(':')[1].trim())
+            lines.shift();
+            codeString = lines.join('\n');
+        }
         Prism.highlightAll();
-    }, []);
+    }, [codeString]);
 
     const containsUrl = urlPattern.test(codeString);
     const isJavaScript = className.includes("language-javascript");
@@ -47,10 +54,9 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children }) => {
                 <code>{codeString}</code>
             </pre>
             {(!containsUrl || containsGit) && !isJavaScript && <CopyButton text={codeString} />}
+            {fileName && <div className="file-name-container">{ fileName }</div>}
         </div>
     );
 };
-
-
 
 export default CodeBlock;
