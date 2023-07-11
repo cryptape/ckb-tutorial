@@ -72,7 +72,7 @@ body {
 }
 
 h1 {
-  font-family: 'Comic Sans Bold', monospace;
+  font-family: 'Comic Sans Bold', sans serif;
   font-size: 32px;
   line-height: 45px;
   margin-bottom: 32px;
@@ -80,7 +80,7 @@ h1 {
 }
 
 h2 {
-  font-family: 'Comic Sans Bold', monospace;
+  font-family: 'Comic Sans Bold', sans serif;
   font-size: 24px;
   line-height: 34px;
   color: #222222;
@@ -88,7 +88,7 @@ h2 {
 
 h3 {
   font-size: 16px;
-  font-family: 'Montserrat Bolder', monospace;
+  font-family: 'Comic Sans Bold', sans serif;
   font-weight: 700;
   margin-bottom: 32px;
   color: #222222;
@@ -112,7 +112,7 @@ code {
   font-size: 14px !important;
   white-space: break-spaces !important;
   word-break: break-word !important;
-  font-family: 'Roboto Mono','sans-serif' !important;
+  font-family: 'Roboto Mono',monospace !important;
   color: #2A2E2E !important;
 }
 

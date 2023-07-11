@@ -26,7 +26,7 @@
         width: 100%;
         padding: 9px 0;
         p {
-          font-family: "Comic Sans MS";
+          font-family: "Comic Sans MS", sans-serif;
         }
         img {
           width: 14px;
@@ -37,7 +37,7 @@
       button {
         padding-left: 8px;
         text-align: left;
-        font-family: "Roboto Mono";
+        font-family: "Roboto Mono", monospace;
         font-weight: 100;
       }
     }
@@ -64,7 +64,7 @@
     }
     .collapsed-button {
       font-size: 1rem;
-      font-family: Comic Sans Bold, monospace;
+      font-family: Comic Sans Bold, sans-serif;
       padding: 1rem 1rem 1rem 0;
       img {
         width: 16px;

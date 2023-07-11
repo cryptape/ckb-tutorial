@@ -22,7 +22,10 @@ const Sidebar: React.FC = () => {
     const location = useLocation();
 
     useEffect(() => {
-        const currentPath = location.pathname;
+        let currentPath = location.pathname;
+        if (currentPath === '/') {
+            currentPath = '/Onboarding/HelloWorld'
+        }
         const matchingFirstLevel = docs.find(doc =>
             currentPath.includes(doc.firstLevel)
         );

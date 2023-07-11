@@ -95,10 +95,10 @@ npm run start
 ```
 
 Ta-da! You should see a URL to the transaction on the explorer.
+As an example, here's what you might see:
 
 <MarginContainer bottom={16} />
 
-[//]: # (<img src={ResultImg} />)
 
 ```bash
 ...
@@ -113,7 +113,6 @@ See https://pudge.explorer.nervos.org/transaction/0x266e83b4a3d7a15c68baf94b17bf
 
 # Uncovering the Message
 
-As an example, here's what you might see:
 
 <video src={UncoveringHelloCkb} controls>
     Your browser does not support the video tag.
@@ -200,7 +199,7 @@ Let's take a closer look at two functions that constitute the majority of [our c
 
 Creates a new transaction that includes a cell with the specified on-chain message. Here's the sequence of actions it performs:
 
-<Flowchart steps={["Creates a transaction skeleton, a mutable data structure used to construct a CKB transaction incrementally, that acts as a blueprint for the final transaction.", "Defines the output cell, including its capacity and lock script, and adds it to the transaction skeleton.", "Modifies the transaction skeleton to cover the output cell's necessary capacity by injecting sufficient input cells.", 'Pays the transaction fee with the <span className="tutorial-font-green">payFeeByFeeRate</span> function of Lumos.']} />
+<Flowchart steps={["Creates a transaction skeleton, a mutable data structure used to construct a CKB transaction incrementally, that acts as a blueprint for the final transaction.", "Defines the output cell, including its capacity and lock script, and adds it to the transaction skeleton.", "Modifies the transaction skeleton to cover the output cell's necessary capacity by injecting sufficient input cells.", 'Pays the transaction fee with the **payFeeByFeeRate** function of Lumos.']} />
 
 <MarginContainer bottom={32} />
 

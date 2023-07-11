@@ -17,7 +17,11 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ name, firstLevel, secondLevel
     const [isActive, setIsActive] = useState(false);
 
     useEffect(() => {
-        const isActivePath = location.pathname.includes(firstLevel) && location.pathname.includes(secondLevel);
+        let currentPath = location.pathname;
+        if(location.pathname == "/") {
+            currentPath = '/Onboarding/HelloWorld'
+        }
+        const isActivePath = currentPath.includes(firstLevel) && currentPath.includes(secondLevel);
         setIsActive(isActivePath);
     }, [location.pathname, firstLevel, secondLevel]);
 
