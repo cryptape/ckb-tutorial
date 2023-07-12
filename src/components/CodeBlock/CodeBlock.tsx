@@ -28,6 +28,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children }) => {
     let codeString = children.props.children || '';
     let className = children.props.className || '';
     const [fileName, setFileName] = useState("")
+    const [codeContent, setCodeContent] = useState("")
 
     useEffect(() => {
         let lines = codeString.split('\n');
@@ -35,7 +36,9 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children }) => {
             setFileName(lines[0].split(':')[1].trim())
             lines.shift();
             codeString = lines.join('\n');
+            console.log(codeString)
         }
+        setCodeContent(codeString)
         Prism.highlightAll();
     }, [codeString]);
 
@@ -51,7 +54,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children }) => {
     return (
         <div className="code-block">
             <pre className={className}>
-                <code>{codeString}</code>
+                <code>{codeContent}</code>
             </pre>
             {(!containsUrl || containsGit) && !isJavaScript && <CopyButton text={codeString} />}
             {fileName && <div className="file-name-container">{ fileName }</div>}
