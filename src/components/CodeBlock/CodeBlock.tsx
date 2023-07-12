@@ -28,17 +28,15 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children }) => {
     let codeString = children.props.children || '';
     let className = children.props.className || '';
     const [fileName, setFileName] = useState("")
-    const [codeContent, setCodeContent] = useState("")
-
-    useEffect(() => {
+    const [code] = useState(() => {
         let lines = codeString.split('\n');
         if (lines[0].startsWith('file:')) {
-            setFileName(lines[0].split(':')[1].trim())
+            setFileName(lines[0].split(':')[1].trim());
             lines.shift();
-            codeString = lines.join('\n');
-            console.log(codeString)
         }
-        setCodeContent(codeString)
+        return lines.join('\n');
+    });
+    useEffect(() => {
         Prism.highlightAll();
     }, [codeString]);
 
@@ -54,7 +52,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children }) => {
     return (
         <div className="code-block">
             <pre className={className}>
-                <code>{codeContent}</code>
+                <code>{code}</code>
             </pre>
             {(!containsUrl || containsGit) && !isJavaScript && <CopyButton text={codeString} />}
             {fileName && <div className="file-name-container">{ fileName }</div>}
