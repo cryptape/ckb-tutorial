@@ -63,11 +63,13 @@ const constructHelloWorldTx = async (
     cellProvider: ckbIndexer,
   });
   // push the live input cells into the transaction's inputs array
+  // @ts-ignore
   txSkeleton = txSkeleton.update("inputs", (inputs) =>
     inputs.push(...inputCells),
   );
 
   // the transaction needs cellDeps to indicate the lockScript's code (SECP256K1_BLAKE160)
+  // @ts-ignore
   txSkeleton = txSkeleton.update("cellDeps", (cellDeps) =>
     cellDeps.push({
       outPoint: {
@@ -95,6 +97,7 @@ const constructHelloWorldTx = async (
     },
     data: "0x",
   };
+  // @ts-ignore
   txSkeleton = txSkeleton.update("outputs", (outputs) =>
     outputs.push(...[targetCell, changeCell]),
   );
@@ -144,7 +147,7 @@ const signAndSendTx = async (
   );
 
   // Step 1: this is the message that will be written on chain
-  const onChainMemo: string = "Hello Common Knowledge Base!";
+  const onChainMemo: string = "Hello CKB!";
 
   // Step 2: construct the transaction
   const txSkeleton = await constructHelloWorldTx(onChainMemo);

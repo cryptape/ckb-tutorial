@@ -36,7 +36,7 @@ npm run start
 Would you like to change `onChainMemo` string and re-run it again?
 
 ## Show me the code
-Let's dive into two functions that take up most of the code space. The [code and comments](./index.ts) are quite self-explained.
+Let's dive into two functions that take up most of the code space. The [code and comments](index.ts) are quite self-explained.
 
 ### Function `constructHelloWorldTx`
 This function creates a new transaction that adds a cell with the proposed on-chain message.

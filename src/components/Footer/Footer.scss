@@ -10,6 +10,11 @@
     .ckb-info {
       color: #ffffff;
       font-family: "Comic Sans MS", monospace;
+      a {
+        &:hover {
+          cursor: pointer;
+        }
+      }
       .discord {
         img {
           width: 25px;
