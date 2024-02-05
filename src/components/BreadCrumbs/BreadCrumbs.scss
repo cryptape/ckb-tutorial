@@ -1,0 +1,25 @@
+.breadcrumb-wrapper {
+  padding: 24px 0;
+  .home-btn {
+    width: 16px;
+    height: 16px;
+  }
+  .arrow-right-btn {
+    width: 16px;
+    height: 20px;
+  }
+  .parent-catg {
+    font-size: 14px;
+    font-family: 'Comic Sans MS Light';
+  }
+  .child-catg {
+    font-size: 14px;
+    font-family: 'Comic Sans MS';
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .breadcrumb-wrapper {
+    display: none !important;
+  }
+}

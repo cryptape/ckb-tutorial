@@ -1,0 +1,42 @@
+.code-block {
+    position: relative;
+    background: #F5F5F5;
+    border-radius: 2px;
+    border: 1px solid var(--text-03, #93A3A1);
+    background: var(--background-code, #FAFAFA);
+    margin: 16px 0;
+
+    .code-block-copy-btn {
+        // position: absolute;
+
+    }
+    .new-keyword {
+        color: #18837D;
+    }
+
+    .language-javascript {
+        .keyword,
+        .property,
+        .constant {
+            color: #222 !important;
+        }
+        .string {
+            color: #8C1C54 !important;
+        }
+    }
+    .github {
+        .url {
+            color: #2A2E2E;
+        }
+    }
+    .file-name-container {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding: 2px 12px;
+        background-color: #18837D;
+        color: #FFFFFF;
+        border-radius: 2px;
+        font-family: 'Roboto Mono',monospace;
+    }
+}

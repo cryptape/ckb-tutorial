@@ -1,0 +1,30 @@
+.flowchart-step {
+    width: 792px;
+    margin: 13px 0;
+    background: #FFFFFF;
+}
+
+.step-index {
+    width: 40px;
+    height: 40px;
+    margin-right: 16px;
+    line-height: 36px;
+    border-radius: 2px;
+    border: 1px solid var(--text-02, #2A2E2E);
+    text-align: center;
+    font-family: 'SF-Pro-Text','sans-serif';
+    flex-shrink: 0; // Add this line
+}
+
+.flowchart-arrow {
+    display: inline-block;
+    margin-left: 16px;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .flowchart-step {
+        width: 100%;
+        align-items: flex-start !important;
+    }
+}

@@ -1,0 +1,48 @@
+.footer-wrapper {
+  width: 100%;
+  height: 200px;
+  background-color: #222;
+
+  .footer-content {
+    width: 844px;
+    margin: 0 auto;
+    padding-top: 58px;
+    .ckb-info {
+      color: #ffffff;
+      font-family: "Comic Sans MS", monospace;
+      a {
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      .discord {
+        img {
+          width: 25px;
+        }
+      }
+      .github {
+        img {
+          width: 20px;
+        }
+      }
+      .unknown {
+        img {
+          width: 26px;
+        }
+      }
+      .twitter {
+        img {
+          width: 28px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px)  {
+  .footer-wrapper{
+    .footer-content {
+      padding: 3.62rem 1.25rem;
+    }
+  }
+}

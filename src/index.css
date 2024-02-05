@@ -1,0 +1,158 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@font-face {
+  font-family: 'Comic Sans MS';
+  src: url("./assets/font/ComicSansMS3.woff") format('woff');
+}
+
+@font-face {
+  font-family: 'Comic Sans Bold';
+  src: url("./assets/font/ComicSansMSBold.woff") format('woff');
+}
+
+@font-face {
+  font-family: 'Comic Sans MS Light';
+  src: url("./assets/font/ComicSansLight.woff") format('woff');
+}
+
+
+@font-face {
+  font-family: 'Roboto Mono';
+  src: url("./assets/font/RobotoMono-Regular.woff") format('woff');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Roboto Mono Bolder';
+  src: url("./assets/font/RobotoMono-Bold.woff") format('woff');
+}
+
+@font-face {
+  font-family: 'SF-Pro-Text';
+  src: url("./assets/font/SF-Pro-Text-Regular.woff") format('woff');
+}
+@font-face {
+  font-family: 'SF-Pro-Text Bolder';
+  src: url("./assets/font/SF-Pro-Text-Bold.woff") format('woff');
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+html {
+  font-size: 16px;
+}
+
+
+#root {
+  margin: 0 auto;
+  color: #222;
+}
+
+a {
+  font-weight: 500;
+  color: #00CFC3;
+  text-decoration: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-family: 'Comic Sans Bold', sans serif;
+  font-size: 32px;
+  line-height: 45px;
+  margin-bottom: 32px;
+  color: #222222;
+}
+
+h2 {
+  font-family: 'Comic Sans Bold', sans serif;
+  font-size: 24px;
+  line-height: 34px;
+  color: #222222;
+}
+
+h3 {
+  font-size: 16px;
+  font-family: 'Comic Sans Bold', sans serif;
+  font-weight: 700;
+  margin-bottom: 32px;
+  color: #222222;
+}
+
+h4 {
+  color: #7B8684;
+}
+
+p {
+  font-family: 'SF-Pro-Text','sans-serif';
+  font-weight: 300;
+  color: #2A2E2E;
+}
+
+pre,
+code {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 1rem !important;
+  font-size: 14px !important;
+  white-space: break-spaces !important;
+  word-break: break-word !important;
+  font-family: 'Roboto Mono',monospace !important;
+  color: #2A2E2E !important;
+}
+
+
+strong {
+  font-family: 'SF-Pro-Text Bolder','sans-serif';
+}
+
+p {
+  max-width: 792px;
+  font-size: 18px;
+  line-height: 163%;
+}
+
+hr {
+  margin: 0 auto;
+  height: 1px;
+  border-color: #222222;
+}
+
+a,
+.tutorial-font-green {
+  color: #18837D;
+}
+
+@media only screen and (max-width: 768px) {
+  .markdown-content-wrapper {
+    padding: 0 1.25rem;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  hr {
+    opacity: 0;
+    margin-top: -6rem;
+  }
+}

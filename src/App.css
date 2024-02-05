@@ -1,0 +1,14 @@
+#root {
+  width: 100%;
+  margin: 0 auto;
+}
+
+
+.markdown-content-wrapper {
+  max-width: 792px;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 768px) {
+
+}

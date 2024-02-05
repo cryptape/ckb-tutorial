@@ -1,0 +1,33 @@
+.next-page-container {
+  .mobile-next-container {
+    .mobile-next-icon {
+      width: 3.75rem;
+      height: 3.75rem;
+    }
+    .mobile-next-text-container {
+      margin-left: 1.25rem;
+      .action-text {
+        font-size: 0.875rem;
+        font-family: Comic Sans MS, monospace;
+        color: #7B8684;
+      }
+      .title-text {
+        font-size: 1.375rem;
+        font-family: Comic Sans MS, monospace;
+        color: #2A2E2E;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .next-page-wrapper {
+    flex-direction: row !important;
+    .pc-text {
+      display: none;
+    }
+    .next-page-btn {
+      display: none;
+    }
+  }
+}

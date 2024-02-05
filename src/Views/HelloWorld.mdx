@@ -1,0 +1,243 @@
+import TextLayout from "../components/TextLayout/TextLayout";
+import Flowchart from "../components/FlowChart/FlowChart";
+import NextPage from "../components/NextPage/NextPage";
+
+import Slogan from '../assets/img/slogan.png'
+import WhiteBoard from '../assets/img/whiteboard.png'
+import GoImg from '../assets/img/go.png'
+import Test from '../assets/img/test.png'
+import ResultImg from '../assets/img/result.png'
+import ProcessImg from '../assets/img/process.png'
+import ClockImg from '../assets/img/clock.png';
+import UncoveringHelloCkb from '../assets/video/uncovering_hello_ckb.mp4'
+import MarginContainer from "../components/MarignContainer/MarginContainer";
+
+# Hello Common Knowledge Base (CKB) !
+
+<TextLayout
+    markdown={
+        'Estimated Time: 5~10mins'
+    }
+    image={ClockImg}
+    ratio={19}
+    reverse={true}
+/>
+
+<MarginContainer bottom={32} />
+
+<img src={Slogan} alt="slogan" />
+
+<MarginContainer bottom={32} />
+
+Ready to pen a love note to the blockchain, or an everlasting secret message to your friend (or your future self)? Dreamed of sending a digital "message in a bottle" that can never get washed away?
+
+<MarginContainer bottom={16} />
+
+Well this tutorial will have you writing on the blockchain faster than a caffeine-fueled coder on a deadline!
+
+<MarginContainer bottom={16} />
+
+
+In this tutorial, you'll learn how to tuck a nifty message - "**Hello CKB!**" - into a [cell](https://docs.nervos.org/docs/reference/cell/) on the CKB testnet. Imagine it as sending a message in a bottle, but the ocean is digital, and the bottle is a super secure, tamper-proof CKB cell!
+
+<MarginContainer bottom={16} />
+
+Once your words are encrypted and inscribed into the blockchain, we'll show you how to uncover them on the [CKB explorer](https://explorer.nervos.org/).
+
+
+<MarginContainer bottom={96} />
+
+---
+
+<MarginContainer bottom={96} />
+
+
+<TextLayout
+    markdown={
+        '# Ready? \n Know your way around [TypeScript](https://www.typescriptlang.org/)? Great! Ever dabbled with [Nervos CKB](https://academy.ckb.dev/courses/basic-theory) and [Lumos](https://github.com/ckb-js/lumos)? Even better! But if not, don\'t worry, we\'ll show you creating on CKB is as easy as 1-2-3!'
+    }
+    image={Test}
+    ratio={174}
+/>
+
+<MarginContainer bottom={64} />
+
+# Set...
+
+First, you‘ll need to clone the repository and install a few things. Open up your terminal and type in these commands:
+
+
+```bash
+git clone https://github.com/cryptape/ckb-tutorial
+```
+
+```bash
+cd ckb-tutorial/js
+```
+Install relevant dependencies such as @ckb-lumos, etc.
+
+
+```bash
+npm install
+```
+
+<MarginContainer bottom={64} />
+
+# Go!
+
+<img src={GoImg} />
+<MarginContainer bottom={16} />
+
+Now, run the program using the following command in your terminal:
+
+```bash
+npm run start
+```
+
+Ta-da! You should see a URL to the transaction on the explorer.
+As an example, here's what you might see:
+
+<MarginContainer bottom={16} />
+
+
+```bash
+...
+Transaction 0x266e83b4a3d7a15c68baf94b17bf5d7a6d41dddf1c6d04e74e55c6e9e26aef3e sent.
+
+See https://pudge.explorer.nervos.org/transaction/0x266e83b4a3d7a15c68baf94b17bf5d7a6d41dddf1c6d04e74e55c6e9e26aef3e
+
+```
+
+<MarginContainer bottom={64} />
+
+
+# Uncovering the Message
+
+
+<video src={UncoveringHelloCkb} controls>
+    Your browser does not support the video tag.
+</video>
+
+<MarginContainer bottom={16} />
+
+You can verify your message on the CKB Explorer:
+
+<Flowchart steps={["Visit the output **URL**.", 'Click on <span>**Cell Info**</span> of **Output#0** and go to **Data** .', 'Copy the number string after **0x**.',"Paste it into the [CypherChef's magic tool](https://gchq.github.io/CyberChef/#recipe=From_Hex('None')) to decode."]} />
+
+Boom! There's your message. Curious about the behind-the-scenes magic?
+
+<MarginContainer bottom={96} />
+
+---
+
+<MarginContainer bottom={96} />
+
+# Behind the Scene
+
+The [program](https://github.com/cryptape/ckb-tutorial/blob/main/js/index.ts) inscribes "Hello CKB!" into a cell on the CKB testnet in [3 steps](https://github.com/cryptape/ckb-tutorial/blob/2c5e4cfae3d7301b4c1d488446cf440c0436b629/js/index.ts#L146-L154):
+
+<MarginContainer bottom={16} />
+
+[//]: # (<img src={ProcessImg} />)
+```javascript
+file:index.ts
+// Step 1: this is the message that will be written on chain
+const onChainMemo: string = "Hello CKB!";
+
+// Step 2: construct the transaction
+let txSkeleton = await constructHelloWorldTx(onChainMemo);
+
+// Step 3: sign and send the transaction
+const txHash = await signAndSendTx(txSkeleton, testPrivKey);
+console.log(`Transaction ${txHash} sent.\n`)
+
+// Done, let’s see the transaction in CKB Testnet Explorer
+console.log(`See ${CKB_TESTNET_EXPLORER}/transaction/${txHash}`);
+```
+
+<MarginContainer bottom={16} />
+
+That's it - three easy steps to making your mark on the blockchain.
+
+<MarginContainer bottom={96} />
+
+---
+
+<MarginContainer bottom={96} />
+
+# Bonus Round
+
+Feeling adventurous?
+
+<img src={WhiteBoard} />
+
+<MarginContainer bottom={16} />
+
+You can access and edit the [code file](https://github.com/Flouse/ckb-tthw/blob/42bf1b5a3566e2d8adf6ef79aad8580de0d79281/js/index.ts#L125-L136) in your terminal using:
+
+```bash
+vi index.ts
+```
+
+Try changing the **onChainMemo** string to a different message and run it again! Go ahead, make the blockchain your own personal diary, but remember - whatever happens on the blockchain, stays on the blockchain!
+
+<MarginContainer bottom={96} />
+
+---
+
+<MarginContainer bottom={96} />
+
+# Want to dive deeper into the code?
+
+Let's take a closer look at two functions that constitute the majority of [our code](https://github.com/Flouse/ckb-tthw/blob/42bf1b5a3566e2d8adf6ef79aad8580de0d79281/js/index.ts): **constructHelloWorldTx** and **signAndSendTx**.
+
+<MarginContainer bottom={32} />
+
+## Function <span className="tutorial-font-green">constructHelloWorldTx</span>
+
+<MarginContainer bottom={16} />
+
+Creates a new transaction that includes a cell with the specified on-chain message. Here's the sequence of actions it performs:
+
+<Flowchart steps={["Creates a transaction skeleton, a mutable data structure used to construct a CKB transaction incrementally, that acts as a blueprint for the final transaction.", "Defines the output cell, including its capacity and lock script, and adds it to the transaction skeleton.", "Modifies the transaction skeleton to cover the output cell's necessary capacity by injecting sufficient input cells.", 'Pays the transaction fee with the **payFeeByFeeRate** function of Lumos.']} />
+
+<MarginContainer bottom={32} />
+
+## Function <span className="tutorial-font-green">signAndSendTx</span>
+<MarginContainer bottom={16} />
+
+Performs two main actions:
+<MarginContainer bottom={16} />
+
+<Flowchart steps={["Signs the transaction skeleton using a test private key.", "Sends the signed transaction to the CKB testnet."]} />
+
+<MarginContainer bottom={96} />
+
+---
+
+<MarginContainer bottom={96} />
+
+
+# Wrap-up
+
+<MarginContainer bottom={32} />
+
+Congratulations! You've just mastered the art of inscribing messages into a cell on the CKB testnet using Lumos and how to verify your transaction on the CKB explorer. Lumos offers a suite of helper functions that simplify interactions with the CKB blockchain, making it easy to create, sign, and send transactions.
+
+<MarginContainer bottom={16} />
+
+And that's a wrap! You're now officially a blockchain scribe.
+
+<MarginContainer bottom={96} />
+
+#### Last modified on Jun 6, 2023
+
+<MarginContainer bottom={32} />
+
+---
+
+<MarginContainer bottom={96} />
+
+<NextPage docName="Multi-purpose NFT" />
+<br/>
+<br/>
